@@ -23,7 +23,7 @@
 
 <body class="capitalize bg-[#f1f1f1]">
   <div class="">
-    <header class="bg-primary  top-0 left-0 right-0 fixed ">
+    <header class="bg-primary  top-0 left-0 right-0 fixed z-50">
       <div class=" ">
         <div class="mx-auto w-[1060px] flex h-24 justify-between items-center">
           <div class="text-3xl">LOGO</div>
@@ -44,3 +44,5 @@
         </div>
       </div>
     </header>
+    <div class="mt-32">
+    </div>
