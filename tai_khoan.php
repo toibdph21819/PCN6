@@ -1,12 +1,12 @@
 <?php include_once './components/header.php' ?>
-<div class="w-[880px] bg-white mx-auto py-5">
-  <div class="ml-16">
+<div class="lg:w-[880px] w-full bg-white mx-auto py-5">
+  <div class="ml-3 lg:ml-16">
     <h2 class="text-xl">hồ sơ của tôi</h2>
     <p class="text-[#989494]">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
   </div>
   <form action="">
-    <div class="flex">
-      <div class="w-1/2 pl-20 pr-5">
+    <div class="flex flex-col-reverse lg:flex-row ">
+      <div class="w-full lg:w-1/2 pl-5 lg:pl-20 pr-5">
         <div class="my-8">
           <label class="block text-gray-700  mb-3" for="username">
             Tên
@@ -42,7 +42,7 @@
           <div class=" absolute top-12 right-2 transition-transform"><i class="fa-solid fa-chevron-down"></i></div>
         </div>
       </div>
-      <div class="w-1/2 mt-10 ">
+      <div class="w-full lg:w-1/2 mt-10 ">
         <div class="w-40 h-40 mx-auto border-black border object-cover rounded-full overflow-hidden">
           <img class="w-full h-full" src="./asset/a1.jpg" alt="">
         </div>
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="w-[340px] mx-auto mt-16">
+    <div class="px-3 sm:w-[340px] mx-auto mt-16">
       <button type="submit" class="rounded-2xl bg-primary w-full text-2xl text-white h-14 hover:border-2 hover:border-primary hover:text-primary hover:bg-white">Lưu</button>
     </div>
   </form>
