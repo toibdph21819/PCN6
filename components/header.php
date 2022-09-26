@@ -61,5 +61,5 @@
         </div>
       </div>
     </header>
-    <div class="mt-32">
+    <div class="mt-24">
     </div>

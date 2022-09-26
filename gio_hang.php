@@ -14,7 +14,7 @@
     <tr class="text-xs border-y-8">
       <td class="py-3 text-center"><input class="check-one" type="checkbox" name="" id=""></td>
       <td class="py-3 text-center"><img width="100%" height="100%" src="./asset/a1.jpg" alt=""></td>
-      <td class="py-3 text-center " style="-webkit-box-orient: vertical;-webkit-line-clamp: 2;display: -webkit-box;">
+      <td class="py-3 text-center" style="-webkit-box-orient: vertical;-webkit-line-clamp: 2;display: -webkit-box;">
         <div class="text-xs overflow-hidden text-ellipsis" style="-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;">
           Chuột Máy Tính Chơi Game Sidotech Abcdhfkj eokepe eokepe eokepe
         </div>
