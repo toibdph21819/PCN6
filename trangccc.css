@@ -1,0 +1,279 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  height: 2755px;
+  background: #f1f1f1;
+  width: 1280px;
+  margin: auto;
+}
+input {
+  width: 284px;
+  height: 37.35px;
+  left: 294px;
+  top: 21.86px;
+
+  background: #ffffff;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+header {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+  height: 92px;
+  left: 0px;
+  top: 0px;
+
+  background: #cf9d1c;
+}
+h1 {
+  padding-left: 40px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #000000;
+}
+ul {
+  padding-top: 16px;
+  list-style: none;
+  display: flex;
+}
+li a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: capitalize;
+
+  color: #ffffff;
+  padding-right: 25px;
+  text-decoration: none;
+}
+.banner img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 880px;
+  height: 300px;
+  left: 205px;
+  top: 81px;
+
+  background: url(image.png);
+  border-radius: 20px;
+}
+.banner2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.banner2 img {
+  margin-top: 40px;
+  width: 340px;
+  height: 200px;
+  left: 206px;
+  top: 421px;
+
+  background: url(image.png);
+  border-radius: 20px;
+}
+.anh1 {
+  padding-left: 31%;
+}
+.anh2 {
+  margin-left: 16%;
+}
+.banner3 img {
+  margin-top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 920px;
+  height: 344px;
+  left: 186px;
+  top: 666px;
+
+  background: url(image.png);
+  border-radius: 20px;
+}
+h2 {
+  margin-bottom: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  padding-left: 9%;
+  margin-top: 7%;
+  color: #cf9d1c;
+
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+.tong1 {
+  margin-left: 7.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  width: 1060px;
+  height: 513px;
+  left: 116px;
+  top: 1130px;
+
+  background: #ffffff;
+  border-radius: 10px;
+}
+.row1 {
+  margin-left: 24%;
+  margin-top: 23px;
+  width: 200.19px;
+  height: 200px;
+  left: 185.07px;
+  top: 1180px;
+
+  background: #cf9d1c;
+  border-radius: 20px;
+}
+.banner4 img {
+  margin-top: 7%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 920px;
+  height: 300px;
+  left: 185px;
+  top: 1698px;
+
+  background: url(image.png);
+  border-radius: 20px;
+}
+.row1 img {
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
+  height: 100px;
+  left: 565.93px;
+  top: 1205px;
+
+  background: url(image.png);
+  border-radius: 65%;
+}
+.row1 p {
+  padding-top: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  text-transform: capitalize;
+
+  color: #ffffff;
+}
+h3 {
+  padding-left: 9%;
+  margin-top: 7%;
+  margin-bottom: -100px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #cf9d1c;
+  text-transform: capitalize;
+}
+.tong2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding-left: 9%;
+  margin-top: 7%;
+  margin-top: 9%;
+  margin-left: 7.5%;
+  width: 1060px;
+  height: 290px;
+  left: 115px;
+  top: 2152px;
+
+  background: #ffffff;
+  border-radius: 22px;
+}
+.row2 {
+  width: 152.02px;
+  height: 248px;
+  margin-top: 17px;
+
+  background: #cf9d1c;
+}
+.row2 img {
+  margin-top: 10px;
+  width: 120px;
+  height: 123px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(image.png);
+  border-radius: 23px;
+}
+
+footer {
+  margin-top: 150px;
+  height: 200px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  background: #cf9d1c;
+}
+h6 {
+  padding-top: 40px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  text-transform: capitalize;
+
+  color: #ffffff;
+}
+.tong4 {
+  padding-top: 40px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.p2 p {
+  padding-bottom: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: capitalize;
+
+  color: #ffffff;
+}
+h5 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  padding-top: 20px;
+  text-transform: capitalize;
+
+  color: #ffffff;
+}
