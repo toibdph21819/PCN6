@@ -25,7 +25,6 @@
           </label>
           <input class="shadow appearance-none border rounded w-full h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
         </div>
-<textarea name="" id="" cols="30" rows="10"></textarea>
         <div class="mb-8 relative ">
           <div class="flex justify-between mb-3 transition-all">
             <label class="block text-gray-700  " for="">
