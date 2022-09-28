@@ -1,4 +1,4 @@
-<div class="lg:w-[1060px] max-w-full mx-auto">
+<div class="container mx-auto">
   <div class="lg:w-[920px] mx-auto">
     <div class="flex justify-between pb-4 text-primary lg:mx-0 mx-5">
       <a href="#" class="text-2xl font-semibold">Sản phẩm</a>

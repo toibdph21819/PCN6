@@ -6,14 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
+        container: {
+
+        },
         extend: {
           colors: {
-            primary: '#cf9d1c',
+            primary: '#0d6efd',
           }
         }
       }
@@ -21,11 +25,11 @@
   </script>
 </head>
 
-<body class="capitalize transition-all bg-[#f1f1f1]">
+<body class="capitalize transition-all bg-[#f3f3f3]">
   <div class="">
-    <header class="bg-primary  top-0 right-0 left-0 sticky z-50">
+    <header class="bg-primary">
       <div class=" ">
-        <div class="mx-auto px-5 xl:px-0 w-full xl:w-[1060px] flex h-24 justify-between items-center">
+        <div class="mx-auto w-full px-5 flex h-24 justify-between items-center">
           <div class="text-3xl">LOGO</div>
           <div class="sm:block hidden">
             <form action="" class="relative">
@@ -61,5 +65,5 @@
         </div>
       </div>
     </header>
-    <div class="mt-24">
+    <div class="mt-12">
     </div>

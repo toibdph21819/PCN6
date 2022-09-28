@@ -1,5 +1,5 @@
 <footer class="bg-primary">
-  <div class="w-[1060px] py-10 px-5 xl:px-0  max-w-full mx-auto flex gap-10 mt-52 flex-col sm:flex-row sm:justify-between sm:items-center">
+  <div class="w-full py-10 px-5 xl:px-0  max-w-full mx-auto flex gap-10 mt-28 flex-col sm:flex-row sm:justify-between sm:items-center">
     <div class="text-3xl text-center">LOGO</div>
     <div class="text-white text-center -translate-y-5">
       <div>Hỗ trợ</div>
