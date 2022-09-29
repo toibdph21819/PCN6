@@ -29,7 +29,7 @@
   <div class="">
     <header class="bg-primary">
       <div class=" ">
-        <div class="mx-auto w-full px-5 flex h-24 justify-between items-center">
+        <div class="mx-auto w-full px-10 flex h-24 justify-between items-center">
           <div class="text-3xl">LOGO</div>
           <div class="sm:block hidden">
             <form action="" class="relative">
