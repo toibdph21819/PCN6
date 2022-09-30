@@ -26,8 +26,8 @@ function pdo_execute($sql)
   } catch (PDOException $e) {
     throw $e;
   } finally {
-    // 
     unset($conn);
+    // àhafhahfhf
   }
 }
 function pdo_query($sql)
