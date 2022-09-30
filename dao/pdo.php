@@ -26,6 +26,7 @@ function pdo_execute($sql)
   } catch (PDOException $e) {
     throw $e;
   } finally {
+    // 
     unset($conn);
   }
 }
