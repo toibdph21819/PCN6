@@ -6,7 +6,7 @@ function pdo_get_connection()
   $password = "9I46KYJB2pJd";
   $dbname = "dfigfagghosting_nhom6";
   try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname;", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8;", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Kết nối thành công";
