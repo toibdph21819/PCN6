@@ -1,48 +1,94 @@
-<?php include_once './public/layout/header.php' ?>
-<div class="w-full px-10 ">
-  <div class="flex gap-1">
-    <div class="w-2/3 max-h-60">
-      <img class="w-full h-full" src="./public/asset/a1.jpg" alt="">
-    </div>
-    <div class="w-1/3 grid max-h-60 grid-rows-2 gap-1">
-      <img class="w-full h-full" src="./public/asset/a1.jpg" alt="">
-      <img class="w-full h-full" src="./public/asset/a1.jpg" alt="">
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="w-full  mt-5 rounded-2xl px-5 py-3  bg-[#e0e0e0] flex flex-wrap gap-3">
-    <a href="" class="border-transparent border-2 hover:border-primary w-32 text-center bg-white rounded-l-full rounded-r-full">
-      <img src="./public/asset/apple.png" class="h-10  mx-auto" alt="">
-    </a>
-    <a href="" class="border-transparent border-2 hover:border-primary w-32 text-center bg-white rounded-l-full rounded-r-full">
-      <img src="./public/asset/hp.png" class="h-10  mx-auto" alt="">
-    </a>
-    <a href="" class="border-transparent border-2 hover:border-primary w-32 text-center bg-white rounded-l-full rounded-r-full">
-      <img src="./public/asset/assus.png" class="h-10 object-contain mx-auto" alt="">
-    </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-  </div>
-  <div class="w-full px-5 py-3 mt-5">
-    <div class="flex flex-wrap">
-      <a href="" class="w-32 text-center">
-        <img src="./public/asset/a1.jpg" class="w-16 h-16 rounded-full mx-auto" alt="">
-        <div class="text-sm">Học tập, văn phòng</div>
-      </a>
-      <a href="" class="w-32 text-center">
-        <img src="./public/asset/a1.jpg" class="w-16 h-16 rounded-full mx-auto" alt="">
-        <div class="text-sm">gaming</div>
-      </a>
-      <a href="" class="w-32 text-center">
-        <img src="./public/asset/a1.jpg" class="w-16 h-16 rounded-full mx-auto" alt="">
-        <div class="text-sm">Macbook</div>
-      </a>
-    </div>
-  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <div>
-    <h2 class="text-2xl text-center mb-5">Laptop bán chạy</h2>
-    <?php include './components/products.php' ?>
+  <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/output.css">
 
+</head>
+
+<body class="capitalize transition-all bg-[#f3f3f3]">
+  <div class="">
+    <header class="bg-primary">
+      <div class=" ">
+        <div class="mx-auto w-full px-10 flex h-24 justify-between items-center">
+          <div class="text-3xl">LOGO</div>
+          <div class="sm:block hidden">
+            <form action="" class="relative">
+              <input class="h-9 rounded-l-2xl border-0 w-64 outline-none px-3 text-sm" type="text" name="search">
+              <button class="h-9 absolute rounded-r-2xl bg-white px-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+          <i class="fa-solid fa-bars menu-nav lg:hidden block p-3 cursor-pointer"></i>
+          <nav class="hidden fixed top-0 left-0 right-0 bottom-0 z-30 bg-slate-600 menu-open">
+            <div class="text-center pt-10">
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">Trang chủ</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">Giỏ hàng</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">phản hồi</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">Đăng ký</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">Đăng nhập</a></div>
+              <form action="" class="relative mt-4">
+                <input class="h-9 rounded-l-2xl border-0 w-64 outline-none px-3 text-sm" type="text" name="search">
+                <button class="h-9 absolute rounded-r-2xl bg-white px-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+              <div class="mt-5 menu-close"><i class="fa-solid fa-xmark text-xl text-white cursor-pointer"></i></div>
+            </div>
+          </nav>
+          <nav class="lg:block hidden ">
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/trangchu/index.php">Trang chủ</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/giohang/index.php">Giỏ hàng</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/phanhoi/index.php">phản hồi</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/dangky/index.php">Đăng ký</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/dangnhap/index.php">Đăng nhập</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- center -->
+    <?php include $VIEW_NAME ?>
+
+
+    <footer class="bg-primary">
+      <div class="w-full py-10 pl-10 pr-16 xl:px-0  max-w-full mx-auto flex gap-10 flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div class="text-3xl text-center">LOGO</div>
+        <div class="text-white text-center -translate-y-5">
+          <div>Hỗ trợ</div>
+          <div><a href="./index.php">phản hồi</a></div>
+        </div>
+        <div class="text-white text-center">
+          <div>các trang</div>
+          <div><a href="./index.php">Trang chủ</a></div>
+          <div><a href="./index.php">sản phẩm</a></div>
+          <div><a href="./index.php">Giỏ hàng</a></div>
+        </div>
+        <div class="text-white text-center -translate-y-4">
+          <div>Tài khoản</div>
+          <div><a href="./index.php">Đăng nhập</a></div>
+          <div><a href="./index.php">Đăng ký</a></div>
+        </div>
+      </div>
+    </footer>
   </div>
-</div>
-<?php include_once './public/layout/footer.php' ?>
+  <script>
+    var menuNav = document.querySelector('.menu-nav');
+    var openMenuNav = document.querySelector('.menu-open');
+    var closeMenuNav = document.querySelector('.menu-close');
+    menuNav.addEventListener('click', function(e) {
+      openMenuNav.classList.add('block');
+      openMenuNav.classList.remove('hidden');
+    })
+    closeMenuNav.onclick = () => {
+      openMenuNav.classList.remove('block');
+      openMenuNav.classList.add('hidden');
+    }
+  </script>
+</body>
+
+</html>

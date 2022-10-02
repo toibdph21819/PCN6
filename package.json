@@ -1,0 +1,27 @@
+{
+  "name": "pcn6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css",
+    "watch": "npx tailwindcss --postcss  -i ./content/css/style.css -o ./content/css/output.css --watch",
+    "build" : "NODE_ENV=production npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toibdph21819/PCN6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toibdph21819/PCN6/issues"
+  },
+  "homepage": "https://github.com/toibdph21819/PCN6#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.17",
+    "tailwindcss": "^3.1.8"
+  }
+}
