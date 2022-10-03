@@ -9,8 +9,19 @@
         <div class="space-x-3 text-xs"><span class="font-bold">Văn A</span><span class="font-bold">0312344983</span><span>Số nhà 2 ngõ 11 phố hồ chí minh phường abc</span><a href="" class="text-primary underline">Thay đổi</a></div>
       </div>
     </div>
-    <div class="bg-stone-900 p-5 ">
-      abvc
+    <div class=" p-5 bg-white ">
+      <table class="w-full">
+        <tr class="text-sm">
+          <td colspan="3">Sản phẩm</td>
+          <td>đơn giá</td>
+          <td>số lượng</td>
+          <td>thành tiền</td>
+        </tr>
+        <tr class="text-xs">
+          <td><img src="<?= $CONTENT_URL ?>/images/a1.jpg" class="h-8 w-8" alt=""></td>
+          <td class="w-80 overflow-hidden whitespace-nowrap text-ellipsis">fffffffffffffffffffffffffffffff fTiêu đềddddd fffffffffffdddddddddddddddddddddđ</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
