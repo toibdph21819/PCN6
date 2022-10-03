@@ -27,7 +27,6 @@ function pdo_execute($sql)
     throw $e;
   } finally {
     unset($conn);
-    // àhafhahfhf
   }
 }
 function pdo_query($sql)
