@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css",
     "watch": "npx tailwindcss --postcss  -i ./content/css/style.css -o ./content/css/output.css --watch",
-    "build" : "NODE_ENV=production npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css"
+    "build": "NODE_ENV=production npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css"
   },
   "repository": {
     "type": "git",
