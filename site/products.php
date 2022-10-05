@@ -3,7 +3,7 @@
   <div class=" grid grid-cols-5 gap-2.5">
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">
       <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?php echo '../../content/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
+      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
       <h3 class="mt-2.5 ">
         Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
       </h3>
@@ -48,7 +48,7 @@
     </a>
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">
       <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?php echo '../../content/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
+      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
       <h3 class="mt-2.5 ">
         Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
       </h3>
@@ -93,7 +93,7 @@
     </a>
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">
       <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?php echo '../../content/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
+      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
       <h3 class="mt-2.5 ">
         Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
       </h3>
@@ -138,7 +138,7 @@
     </a>
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">
       <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?php echo '../../content/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
+      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
       <h3 class="mt-2.5 ">
         Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
       </h3>
@@ -183,7 +183,7 @@
     </a>
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">
       <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?php echo '../../content/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
+      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
       <h3 class="mt-2.5 ">
         Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
       </h3>
