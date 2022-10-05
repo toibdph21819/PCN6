@@ -24,25 +24,10 @@
           </label>
           <input class="shadow appearance-none border rounded w-full h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
         </div>
-        <div class="mb-8 relative ">
-          <div class="flex justify-between mb-3 transition-all">
-            <label class="block text-gray-700  " for="">
-              Địa chỉ nhận hàng
-            </label>
-            <a class="text-[#024AD6] underline" href="">Thêm địa chỉ</a>
-          </div>
-          <select class="peer shadow appearance-none border h-12 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <option>Chọn địa chỉ nhận hàng của bạn</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class=" absolute top-12 right-2 transition-transform"><i class="fa-solid fa-chevron-down"></i></div>
-        </div>
       </div>
       <div class="w-full lg:w-1/2 mt-10 ">
         <div class="w-40 h-40 mx-auto border-black border object-cover rounded-full overflow-hidden">
-          <img class="w-full h-full" src="./asset/a1.jpg" alt="">
+          <img class="w-full h-full" src="<?= $CONTENT_URL ?>/images/a1.jpg" alt="">
         </div>
         <div class="mt-6 mx-auto text-center">
           <input type="file" name="avatar" id="avatar" class="hidden">
