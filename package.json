@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css",
-    "watch": "npx tailwindcss --postcss  -i ./content/css/style.css -o ./content/css/output.css --watch",
-    "build": "NODE_ENV=production npx tailwindcss --postcss -i ./content/css/style.css -o ./content/css/output.css"
+    "watch": "npx tailwindcss --postcss  -i ./content/css/style.css -o ./content/css/output.css --watch"
   },
   "repository": {
     "type": "git",
