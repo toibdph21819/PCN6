@@ -1,4 +1,4 @@
-<div class="p-10 w-full mx-auto">
+<div class="p-10 w-full flex justify-center">
   <div class="  bg-white mx-auto">
     <div class="h-20 text-3xl leading-[80px] px-3">Giỏ hàng</div>
     <table class="px-5 ">
