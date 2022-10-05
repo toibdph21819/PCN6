@@ -4,7 +4,7 @@
             <h2 class="mt-5 text-center text-2xl mb-3">Tạo tài khoản của bạn</h2>
             <div class="flex justify-center mb-3">
                 <p class="">đã có tài khoản?</p>
-                <a class="underline text-primary" href="<?= $SITE_URL ?>/dangnhap/index.php">Đăng nhập</a>
+                <a class="underline text-primary" href="<?= $SITE_URL ?>/?dangnhap">Đăng nhập</a>
             </div>
             <form action="" class="mt-5 mx-auto px-2 sm:px-10 lg:px-20">
                 <div class="mt-4 space-y-3 ">
@@ -35,7 +35,7 @@
                     <input type="submit" value="Đăng ký" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
                 </div>
                 <div class="text-center w-full sm:w-1/2 mx-auto mt-5">
-                    <a href="<?= $SITE_URL ?>/trangchu/index.php" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
+                    <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
                 </div>
             </form>
         </div>
