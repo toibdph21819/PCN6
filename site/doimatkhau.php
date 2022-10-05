@@ -20,7 +20,7 @@
           <input type="submit" value="Gửi" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
         </div>
         <div class="text-center w-full  mx-auto mt-5">
-          <a href="<?= $SITE_URL ?>/trangchu/index.php" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
+          <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
         </div>
 
       </form>
