@@ -532,14 +532,6 @@ video {
   bottom: 0px;
 }
 
-.top-12 {
-  top: 3rem;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
 .z-30 {
   z-index: 30;
 }
@@ -1275,11 +1267,6 @@ video {
 .text-\[\#989494\] {
   --tw-text-opacity: 1;
   color: rgb(152 148 148 / var(--tw-text-opacity));
-}
-
-.text-\[\#024AD6\] {
-  --tw-text-opacity: 1;
-  color: rgb(2 74 214 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
