@@ -34,3 +34,10 @@ function users_delete($id)
   }
   pdo_execute($sql, $id);
 }
+
+// lấy ra số lượng của khách hàng
+function users_select_count()
+{
+  $sql = "SELECT count(*) as count from users where admin = 0";
+  return pdo_query_one($sql);
+}

@@ -34,3 +34,9 @@ function loai_delete($id)
   }
   pdo_execute($sql, $id);
 }
+// lấy ra số lượng của phản hồi
+function category_select_count()
+{
+  $sql = "SELECT count(*) as count from categories";
+  return pdo_query_one($sql);
+}

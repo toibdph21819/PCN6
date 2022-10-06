@@ -34,3 +34,9 @@ function brand_delete($id)
   }
   pdo_execute($sql, $id);
 }
+// lấy ra số lượng
+function brand_select_count()
+{
+  $sql = "SELECT count(*) as count from brands";
+  return pdo_query_one($sql);
+}
