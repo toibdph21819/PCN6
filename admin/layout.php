@@ -32,12 +32,12 @@
       <div class=" bg-white w-72 p-5 space-y-2">
         <a class="block border px-4 py-2 rounded-md" href="<?= $ADMIN_URL ?>">dashboard</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý thương hiệu</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý loại</a>
+        <a class="block border px-4 py-2 rounded-md" href="">Quản lý danh mục</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý phản hồi</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý hoá đơn</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý sản phẩm</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý đánh giá</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý kiểu</a>
+        <a class="block border px-4 py-2 rounded-md" href="">Quản lý loại</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý khách hàng</a>
         <a class="block border px-4 py-2 rounded-md" href="">Quản lý giảm giá</a>
       </div>
