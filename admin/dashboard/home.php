@@ -1,4 +1,5 @@
 <div class="p-5 ">
+  <h2 class="text-xl">Dashboard</h2>
   <div class="grid grid-cols-3 gap-3">
     <div class="flex justify-center ">
       <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm text-center">
