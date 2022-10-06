@@ -96,4 +96,16 @@ function product_sort_by_price()
   return pdo_query($sql);
 }
 
+// lấy ra số lượng của sản phẩm
+function product_select_count()
+{
+  $sql = "SELECT count(*) as count from products";
+  return pdo_query_one($sql);
+}
+
+function product_select_stats_by_category()
+{
+  $sql = "SELECT COUNT(*) as count,categories.name as name from products join categories on products.category_id = categories.id GROUP BY category_id";
+  return pdo_query($sql);
+}
 //trang
