@@ -1,5 +1,8 @@
 <?php
 require './dao/pdo.php';
-require './dao/loai.php';
-require './dao/thuonghieu.php';
-require './dao/sanpham.php';
+require './dao/vouchers.php';
+
+$a =  vouchers_select_all();
+foreach ($a as $f) {
+  var_dump($f);
+}
