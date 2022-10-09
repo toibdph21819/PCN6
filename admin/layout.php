@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/output.css">
 
 </head>
@@ -29,23 +29,23 @@
       </div>
     </div>
     <div class="flex  gap-3">
-      <div class=" bg-white w-72 p-5 space-y-2">
-        <a class="block border px-4 py-2 rounded-md" href="<?= $ADMIN_URL ?>">dashboard</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý thương hiệu</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý danh mục</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý phản hồi</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý hoá đơn</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý sản phẩm</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý đánh giá</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý loại</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý khách hàng</a>
-        <a class="block border px-4 py-2 rounded-md" href="">Quản lý giảm giá</a>
+      <div class=" bg-white w-72 p-5 space-y-2 a">
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>">dashboard</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý thương hiệu</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý danh mục</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý phản hồi</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý hoá đơn</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/products/index.php">Quản lý sản phẩm</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý đánh giá</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý loại</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý khách hàng</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý giảm giá</a>
       </div>
       <main class="flex-1 h-[100vh] overflow-y-scroll scroll-smooth">
         <?php include_once "$VIEW_NAME" ?>
       </main>
     </div>
-    <footer class=" w-full h-10 flex justify-center items-center bg-primary text-white mt-2">
+    <footer class=" w-full h-10 flex justify-center items-center bg-primary text-white ">
       Copyright &copy; được thiết kế và phát triển bởi pcn6
     </footer>
   </div>
