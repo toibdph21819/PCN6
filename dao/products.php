@@ -2,7 +2,7 @@
 // lấy nhiều
 function product_select_all()
 {
-  $sql = "SELECT * FROM products";
+  $sql = "SELECT products.* ,categories.name as cate_name,brands.name as brand_name FROM products join categories on category_id = categories.id join brands on brand_id = brands.id join vouchers on voucher_id = vouchers.id";
   return  pdo_query($sql);
 }
 //lấy 1
@@ -12,16 +12,16 @@ function product_select_by_id($id)
   return pdo_query_one($sql, $id);
 }
 //thêm
-function product_insert($name, $price, $quantity, $featured, $active, $description, $category_id, $voucher_id, $brand_id)
+function product_insert($name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id)
 {
-  $sql = "INSERT INTO products (name, price,quantity, featured, active, description, category_id, voucher_id, brand_id) values(?,?,?,?,?,?,?,?,?)";
-  pdo_execute($sql, $name, $price, $quantity, $featured, $active, $description, $category_id, $voucher_id, $brand_id);
+  $sql = "INSERT INTO products (name, price, featured, active, description, category_id, voucher_id, brand_id) values(?,?,?,?,?,?,?,?,?)";
+  pdo_execute($sql, $name, $price, $featured, $active, $description, $category_id, $voucher_id, $brand_id);
 }
 //sửa
-function product_update($id, $name, $price, $quantity, $featured, $active, $description, $category_id, $voucher_id, $brand_id)
+function product_update($id, $name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id)
 {
-  $sql = "UPDATE products SET name = ?, price = ?, quantity = ?, featured = ?, active = ?, description = ?, category_id = ?, voucher_id = ?, brand_id = ? where id = ?";
-  pdo_execute($sql, $name, $price, $quantity, $featured, $active, $description, $category_id, $voucher_id, $brand_id, $id);
+  $sql = "UPDATE products SET name = ?, price = ?,  featured = ?, active = ?, description = ?, category_id = ?, voucher_id = ?, brand_id = ? where id = ?";
+  pdo_execute($sql, $name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id, $id);
 }
 //xoá
 function product_delete($id)
@@ -69,25 +69,21 @@ function product_select_features()
 function product_select_by_category($category_id)
 {
   $sql = "SELECT * FROM products WHERE category_id=?";
-  return pdo_query($sql, $category_id);
+  return pdo_query_all_by_reference_id($sql, $category_id);
 }
 //tìm kiếm bằng thương hiệu
 function product_select_by_brand($brand_id)
 {
   $sql = "SELECT * FROM products WHERE brand_id=?";
-  return pdo_query($sql, $brand_id);
+  return pdo_query_all_by_reference_id($sql, $brand_id);
 }
+
+
 //tìm kiếm bằng value của loại hoặc sản phẩm
 function product_select_value($value)
 {
   $sql = "SELECT * FROM products join categories on products.id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
   return pdo_query($sql, '%' . $value . '%', '%' . $value . '%');
-}
-//giảm số lượng hàng trong kho khi thanh toán
-function product_decrease_quantity($id)
-{
-  $sql = "UPDATE products SET quantity=quantity-1 WHERE id = ?";
-  pdo_execute($sql, $id);
 }
 //sắp xếp theo giá giảm dần
 function product_sort_by_price()
