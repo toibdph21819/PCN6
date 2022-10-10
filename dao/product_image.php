@@ -16,7 +16,7 @@ function product_image_insert($image, $product_id)
 function product_image_update($id, $image, $product_id)
 {
   $sql = "UPDATE product_image SET product_id = ?, image = ? where id = ?";
-  pdo_execute($sql,  $image, $id, $product_id);
+  pdo_execute($sql, $product_id, $image, $id);
 }
 //xoá
 function product_image_delete($id)

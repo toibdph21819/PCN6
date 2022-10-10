@@ -11,10 +11,16 @@ function product_select_by_id($id)
   $sql = "SELECT * FROM products Where id = ?";
   return pdo_query_one($sql, $id);
 }
+//lấy ra id cuối cùng vừa mới tạo
+function product_select_last_by_id()
+{
+  $sql = "SELECT id FROM products ORDER BY id DESC LIMIT 1";
+  return pdo_query($sql);
+}
 //thêm
 function product_insert($name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id)
 {
-  $sql = "INSERT INTO products (name, price, featured, active, description, category_id, voucher_id, brand_id) values(?,?,?,?,?,?,?,?,?)";
+  $sql = "INSERT INTO products (name, price, featured, active, description, category_id, voucher_id, brand_id) values(?,?,?,?,?,?,?,?)";
   pdo_execute($sql, $name, $price, $featured, $active, $description, $category_id, $voucher_id, $brand_id);
 }
 //sửa
@@ -27,11 +33,7 @@ function product_update($id, $name, $price,  $featured, $active, $description, $
 function product_delete($id)
 {
   $sql = "DELETE FROM products WHERE id = ?";
-  if (is_array($id)) {
-    foreach ($id as $item) {
-      pdo_execute($sql, $item);
-    }
-  }
+
   pdo_execute($sql, $id);
 }
 
