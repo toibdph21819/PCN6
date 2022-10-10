@@ -1,5 +1,5 @@
 <div class="bg-white flex justify-center">
-  <div class="flex flex-col p-5">
+  <div class="flex flex-col p-10">
     <h2 class="text-xl">Danh sách sản phẩm</h2>
     <div>
       <div class="flex space-x-2 justify-center">
@@ -33,6 +33,10 @@
                   chi tiết
                 </th>
                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 border-r py-4">
+                  Phân loại
+                </th>
+
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 border-r py-4">
                   Thao tác
                 </th>
               </tr>
@@ -56,8 +60,10 @@
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
                       <?= $row['brand_name'] ?? "" ?>
                     </td>
+
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r "><a href="index.php?show&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">xem</a></td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r space-x-2"><a href="index.php?update&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">sửa</a><a href="index.php?delete&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">xoá</a></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r space-x-2"><a href="index.php?add-link-to-type&id=<?= $row['id'] ?>" class="underline text-primary">thao tác</a></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r space-x-2"><a href="index.php?edit&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">sửa</a><a href="index.php?delete&id=<?= $row['id'] ?? "" ?>" class="underline text-primary" onclick="return confirm('Chắc chưa')">xoá</a></td>
 
                   </tr>
                 <?php endforeach; ?>
