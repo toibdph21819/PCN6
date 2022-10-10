@@ -29,6 +29,7 @@ function pdo_execute($sql)
     unset($conn);
   }
 }
+
 function pdo_query($sql)
 {
   $sql_args = array_slice(func_get_args(), 1);
