@@ -14,6 +14,4 @@ $contact_count = contact_select_count();
 $brand_count = brand_select_count();
 $category_count = category_select_count();
 
-
-
 require_once "../layout.php";
