@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/output.css">
 
 </head>
@@ -23,23 +23,25 @@
       <div class=" w-3/4 flex items-center justify-end gap-x-2 p-2">
         Chào mừng bạn tới trang quản trị
         <div class="flex items-center space-x-2">
-          <img src="<?= $CONTENT_URL ?>/images/a1.jpg" class="w-8 h-8 rounded-full" alt="">
-          <p>Thanh</p>
+
+          <p class="font-bold"><?= get_cookie('name') ?></p>
+          <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?dangxuat">Đăng xuất</a>
+          <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?taikhoan">Tài khoản</a>
         </div>
       </div>
     </div>
     <div class="flex  gap-3">
       <div class=" bg-white w-72 p-5 space-y-2 a">
         <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>">dashboard</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý thương hiệu</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý danh mục</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý phản hồi</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý hoá đơn</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/brands/index.php">Quản lý thương hiệu</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/categories/index.php">Quản lý danh mục</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/contact/index.php">Quản lý phản hồi</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/orders/index.php">Quản lý hoá đơn</a>
         <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/products/index.php">Quản lý sản phẩm</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý đánh giá</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý loại</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý khách hàng</a>
-        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="">Quản lý giảm giá</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/reviews/index.php">Quản lý đánh giá</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/types/index.php">Quản lý loại</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/users/index.php">Quản lý khách hàng</a>
+        <a class="block border px-4 py-2 rounded-md hover:bg-primary hover:text-white" href="<?= $ADMIN_URL ?>/vouchers/index.php">Quản lý giảm giá</a>
       </div>
       <main class="flex-1 h-[100vh] overflow-y-scroll scroll-smooth">
         <?php include_once "$VIEW_NAME" ?>
