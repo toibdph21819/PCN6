@@ -2,24 +2,29 @@
 require_once '../../global.php';
 require_once '../../dao/pdo.php';
 
-require_once '../../dao/brands.php';
-require_once '../../dao/categories.php';
-require_once '../../dao/vouchers.php';
-require_once '../../dao/products.php';
-require_once '../../dao/types.php';
-require_once '../../dao/product_type.php';
-require_once '../../dao/product_image.php';
 if (isset($_GET['show'])) {
+  require_once '../../dao/brands.php';
+  require_once '../../dao/categories.php';
+  require_once '../../dao/vouchers.php';
+  require_once '../../dao/products.php';
+  require_once '../../dao/product_type.php';
+  require_once '../../dao/product_image.php';
   $get_id = $_GET['id'] ?? "";
   $image_product =  product_image_select_by_product($get_id);
   $row = product_select_by_id($get_id);
   $rows_types = product_type_select_by_type($get_id);
-  $row_cate = loai_select_by_id($row['category_id']);
+  $row_cate = categories_select_by_id($row['category_id']);
   $row_brand = brand_select_by_id($row['brand_id']);
   $row_voucher = voucher_select_by_id($row['voucher_id']);
   $VIEW_NAME = 'show.php';
 } elseif (isset($_GET['create'])) {
-  $rows_cate = loai_select_all();
+  require_once '../../dao/brands.php';
+  require_once '../../dao/categories.php';
+  require_once '../../dao/vouchers.php';
+  require_once '../../dao/products.php';
+  require_once '../../dao/types.php';
+  require_once '../../dao/product_image.php';
+  $rows_cate = categories_select_all();
   $rows_brand = brand_select_all();
   $rows_types = type_select_all();
   $rows_voucher = voucher_select_all();
@@ -94,7 +99,14 @@ if (isset($_GET['show'])) {
 
   $VIEW_NAME = 'create.php';
 } elseif (isset($_GET['edit'])) {
-  $rows_cate = loai_select_all();
+  require_once '../../dao/brands.php';
+  require_once '../../dao/categories.php';
+  require_once '../../dao/vouchers.php';
+  require_once '../../dao/products.php';
+  require_once '../../dao/types.php';
+
+  require_once '../../dao/product_image.php';
+  $rows_cate = categories_select_all();
   $rows_brand = brand_select_all();
   $rows_types = type_select_all();
   $rows_voucher = voucher_select_all();
@@ -179,11 +191,14 @@ if (isset($_GET['show'])) {
   }
   $VIEW_NAME = 'edit.php';
 } elseif (isset($_GET['delete'])) {
+  require_once '../../dao/products.php';
   $get_id = $_GET['id'] ?? "";
   product_delete($get_id);
   header("location: " . $ADMIN_URL . '/products/index.php');
   die;
 } elseif (isset($_GET['add-link-to-type'])) {
+  require_once '../../dao/product_type.php';
+  require_once '../../dao/types.php';
   $get_id = $_GET['id'];
   $types = type_select_all();
 
@@ -206,11 +221,13 @@ if (isset($_GET['show'])) {
   }
   $VIEW_NAME = 'add-link-to-type.php';
 } elseif (isset($_GET['delete-link-to-type'])) {
+  require_once '../../dao/product_type.php';
   $get_id = $_GET['id'];
   $product_id = $_GET['product_id'];
   product_type_delete($get_id);
   header("location: index.php?add-link-to-type&id=$product_id");
 } else {
+  require_once '../../dao/products.php';
   $rows = product_select_all();
   $VIEW_NAME = 'list.php';
 }

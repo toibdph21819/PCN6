@@ -6,7 +6,7 @@
     <h3 class="text-lg mt-4 text-center">Tên sản phẩm : <?= $row['name'] ?></h3>
     <p class="text-xs">Mô tả: <span><?= $row['description'] ?></span></p>
     <h2>Hình ảnh:</h2>
-    <div class="flex gap-2 justify-center">
+    <div class="flex gap-2 flex-wrap justify-center">
       <?php foreach ($image_product as $image) : ?>
         <img width="200" class="mt-3" src="<?= $CONTENT_URL ?>/images/<?= $image['image'] ?>" alt="">
       <?php endforeach; ?>
