@@ -1,3 +1,5 @@
 <?php
+include_once './global.php';
 
-header('Location: site/index.php');
+
+check_login();
