@@ -2,7 +2,7 @@
 // lấy nhiều
 function contact_select_all()
 {
-  $sql = "SELECT * FROM contacts";
+  $sql = "SELECT contacts.*,users.name,email FROM contacts join users on user_id = users.id";
   return  pdo_query($sql);
 }
 //lấy 1
@@ -27,11 +27,7 @@ function contact_update($id, $name, $image)
 function contact_delete($id)
 {
   $sql = "DELETE FROM contacts WHERE id = ?";
-  if (is_array($id)) {
-    foreach ($id as $item) {
-      pdo_execute($sql, $item);
-    }
-  }
+
   pdo_execute($sql, $id);
 }
 // lấy ra số lượng của phản hồi

@@ -12,25 +12,20 @@ function voucher_select_by_id($id)
   return pdo_query_one($sql, $id);
 }
 //thêm
-function vouchers_insert($name, $discount, $created_at, $due)
+function voucher_insert($name, $discount, $due)
 {
-  $sql = "INSERT INTO vouchers (name, discount, created_at, due) values(?,?)";
-  pdo_execute($sql, $name, $discount, $created_at, $due);
+  $sql = "INSERT INTO vouchers (name, discount, due) values(?,?,?)";
+  pdo_execute($sql, $name, $discount, $due);
 }
 //sửa
-function vouchers_update($id, $name, $discount, $created_at, $due)
+function voucher_update($id, $name, $discount, $due)
 {
-  $sql = "UPDATE vouchers SET name = ?, discount= ?, created_at = ?, due = ? where id = ?";
-  pdo_execute($sql, $name, $discount, $created_at, $due, $id);
+  $sql = "UPDATE vouchers SET name = ?, discount= ?, due = ? where id = ?";
+  pdo_execute($sql, $name, $discount,  $due, $id);
 }
 //xoá
-function vouchers_delete($id)
+function voucher_delete($id)
 {
   $sql = "DELETE FROM vouchers WHERE id = ?";
-  if (is_array($id)) {
-    foreach ($id as $item) {
-      pdo_execute($sql, $item);
-    }
-  }
   pdo_execute($sql, $id);
 }
