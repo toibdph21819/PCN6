@@ -1,7 +1,7 @@
 <?php
 require './dao/pdo.php';
 require './dao/products.php';
-require './dao/product_image.php';
+require './dao/order_detail.php';
 
-$a = product_select_last_by_id();
-echo $a[0]['id'];
+$a = order_detail_select_all();
+print_r($a);
