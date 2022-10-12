@@ -28,11 +28,18 @@
           <i class="fa-solid fa-bars menu-nav lg:hidden block p-3 cursor-pointer"></i>
           <nav class="hidden fixed top-0 left-0 right-0 bottom-0 z-30 bg-slate-600 menu-open">
             <div class="text-center pt-10">
-              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?trangchu">Trang chủ</a></div>
-              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?giohang">Giỏ hàng</a></div>
-              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?phanhoi">phản hồi</a></div>
-              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?dangky">Đăng ký</a></div>
-              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?dangnhap">Đăng nhập</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?trangchu">Trang chủ</a></div>
+              <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?giohang">Giỏ hàng</a></div>
+              <?php if (!get_cookie('user_id')) : ?>
+                <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangky">Đăng ký</a></div>
+                <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangnhap">Đăng nhập</a></div>
+              <?php else : ?>
+                <?php if (get_cookie('admin')) : ?>
+                  <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $ADMIN_URL ?>">admin</a>
+                <?php endif; ?>
+                <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?phanhoi">phản hồi</a></div>
+                <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangxuat">Đăng xuất</a></div>
+              <?php endif; ?>
               <form action="" class="relative mt-4">
                 <input class="h-9 rounded-l-2xl border-0 w-64 outline-none px-3 text-sm" type="text" name="search">
                 <button class="h-9 absolute rounded-r-2xl bg-white px-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
@@ -41,11 +48,19 @@
             </div>
           </nav>
           <nav class="lg:block hidden ">
-            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?trangchu">Trang chủ</a>
-            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?giohang">Giỏ hàng</a>
-            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?phanhoi">phản hồi</a>
-            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?dangky">Đăng ký</a>
-            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>/?dangnhap">Đăng nhập</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?trangchu">Trang chủ</a>
+            <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?giohang">Giỏ hàng</a>
+            <?php if (!get_cookie('user_id')) : ?>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangky">Đăng ký</a>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangnhap">Đăng nhập</a>
+            <?php else : ?>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?phanhoi">phản hồi</a>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?taikhoan">tài khoản</a>
+              <?php if (get_cookie('admin')) : ?>
+                <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $ADMIN_URL ?>">admin</a>
+              <?php endif; ?>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangxuat">Đăng xuất</a>
+            <?php endif; ?>
           </nav>
         </div>
       </div>
