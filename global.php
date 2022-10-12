@@ -16,3 +16,19 @@ function get_cookie($name)
 {
   return $_COOKIE[$name] ?? '';
 }
+function check_login()
+{
+  global $SITE_URL;
+  global $ADMIN_URL;
+  if (isset($_COOKIE['admin'])) {
+    if ($_COOKIE['admin'] == 1) {
+      header('Location: ' . $ADMIN_URL);
+      die;
+    } elseif ($_COOKIE['admin'] == 0) {
+      header('Location: ' . $SITE_URL);
+      die;
+    }
+  } else {
+    header('Location: ' . $SITE_URL);
+  }
+}
