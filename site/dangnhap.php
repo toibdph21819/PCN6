@@ -6,19 +6,24 @@
                 <h2>bạn đang Đăng nhập</h2>
                 <b>Vào cửa hàng CDN6</b>
             </div>
-            <form class="" action="">
+            <form class="" method="post" action="index.php?dangnhap">
+                <div>
+                    <p class=" text-xs italic error text-red-600"><?= $err['user'] ?? '' ?></p>
+                </div>
                 <div class="mt-4 space-y-3">
                     <label for="name">email</label>
-                    <input type="text" name="name" placeholder="Nhập email" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <input type="text" name="email" placeholder="Nhập email" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <p class=" text-xs italic error text-red-600"><?= $err['email'] ?? '' ?></p>
                 </div>
 
                 <div class="mt-4 space-y-3">
                     <label for="password">Mật khẩu</label>
                     <input type="text" name="password" placeholder="********" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <p class=" text-xs italic error text-red-600"><?= $err['password'] ?? '' ?></p>
                 </div>
 
                 <div class="text-center w-full  mx-auto mt-5">
-                    <input type="submit" value="Đăng nhập" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
+                    <input type="submit" name="submit" value="Đăng nhập" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
                 </div>
                 <div class="text-center w-full  mx-auto mt-5">
                     <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
