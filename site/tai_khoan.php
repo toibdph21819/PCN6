@@ -1,4 +1,4 @@
-<div class="lg:w-[880px] w-full bg-white mx-auto py-5">
+<div class="container py-10 w-full bg-white mx-auto ">
   <div class="ml-3 lg:ml-16">
     <h2 class="text-xl">hồ sơ của tôi</h2>
     <p class="text-[#989494]">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>

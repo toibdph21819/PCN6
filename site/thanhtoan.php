@@ -1,4 +1,4 @@
-<div class="w-full py-5 px-2 sm:px-10">
+<div class="w-full container py-5 px-2 sm:px-10">
   <div class="text-sm">
     <h2 class="text-center my-3 text-2xl">Thanh toán</h2>
     <div class="bg-white p-5 mb-5">

@@ -22,8 +22,8 @@
                     <p class=" text-xs italic error text-red-600"><?= $err['password'] ?? '' ?></p>
                 </div>
 
-                <div class="text-center w-full  mx-auto mt-5">
-                    <input type="submit" name="submit" value="Đăng nhập" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
+                <div class="text-center w-full  mx-auto mt-5 transition-colors rounded-md bg-primary hover:bg-transparent  border-primary border">
+                    <input type="submit" name="submit" value="Đăng nhập" class=" w-full py-2  hover:text-black text-white cursor-pointer">
                 </div>
                 <div class="text-center w-full  mx-auto mt-5">
                     <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>

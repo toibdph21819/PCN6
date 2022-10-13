@@ -1,4 +1,4 @@
-<div class="w-full py-5 px-2 sm:px-10 ">
+<div class="w-full mx-auto container py-5 px-2 sm:px-10 ">
   <div class="flex md:flex-row flex-col gap-1">
     <div class="md:w-2/3 w-full max-h-60 h-60">
       <img class="w-full h-full" src="<?= $CONTENT_URL ?>/images/a1.jpg" alt="">

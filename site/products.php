@@ -1,4 +1,4 @@
-<div class="w-full px-10">
+<div class="w-full container mx-auto py-10 px-10">
   <h2 class="text-2xl text-center mb-5">Kết quả tìm kiếm cho Sản phẩm </h2>
   <div class=" grid grid-cols-5 gap-2.5">
     <a href="" class="p-2.5  text-sm bg-white shadow-lg">

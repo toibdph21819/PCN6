@@ -16,8 +16,8 @@
           <input type="number" name="name" placeholder="Nhập mật khẩu mới" class="p-2 border shadow-sm rounded-md h-10 w-full">
         </div>
 
-        <div class="text-center w-full  mx-auto mt-5">
-          <input type="submit" value="Gửi" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
+        <div class="text-center w-full transition-colors hover:bg-white rounded-md bg-primary mx-auto mt-5 border-primary border">
+          <input type="submit" value="Gửi" class=" w-full py-2   cursor-pointer hover:text-black text-white ">
         </div>
         <div class="text-center w-full  mx-auto mt-5">
           <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>

@@ -1,4 +1,4 @@
-<div class="w-full py-5 space-y-10 px-2 sm:px-5">
+<div class="w-full py-5 container mx-auto space-y-10 px-2 sm:px-5">
   <div class="  mx-auto bg-white p-5">
     <div class="sm:grid md:grid-cols-2 gap-5">
       <div class="flex flex-col space-y-1">
