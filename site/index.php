@@ -5,9 +5,20 @@ require_once '../dao/pdo.php';
 if (isset($_GET['giohang'])) {
 
   $VIEW_NAME = 'gio_hang.php';
+} elseif (isset($_GET['thanhtoan'])) {
+
+  $VIEW_NAME = 'thanhtoan.php';
 } elseif (isset($_GET['phanhoi'])) {
 
   $VIEW_NAME = 'phanhoi.php';
+} elseif (isset($_GET['sp'])) {
+  $VIEW_NAME = 'products.php';
+} elseif (isset($_GET['ctsp'])) {
+  $VIEW_NAME = 'chitietsp.php';
+} elseif (isset($_GET['doimk'])) {
+  $VIEW_NAME = 'doimatkhau.php';
+} elseif (isset($_GET['quenmk'])) {
+  $VIEW_NAME = 'quenmk.php';
 } elseif (isset($_GET['dangky'])) {
 
   $VIEW_NAME = 'dangky.php';
