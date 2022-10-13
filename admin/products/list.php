@@ -61,7 +61,9 @@
                       <?= $row['brand_name'] ?? "" ?>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r "><a href="index.php?show&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">xem</a></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r ">
+                      <a href="index.php?show&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">xem</a>
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r space-x-2"><a href="index.php?add-link-to-type&id=<?= $row['id'] ?>" class="underline text-primary">thao tác</a></td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r space-x-2"><a href="index.php?edit&id=<?= $row['id'] ?? "" ?>" class="underline text-primary">sửa</a><a href="index.php?delete&id=<?= $row['id'] ?? "" ?>" class="underline text-primary" onclick="return confirm('Chắc chưa')">xoá</a></td>
 

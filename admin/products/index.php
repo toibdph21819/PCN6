@@ -1,14 +1,16 @@
 <?php
 require_once '../../global.php';
 require_once '../../dao/pdo.php';
+require_once '../../dao/brands.php';
+require_once '../../dao/categories.php';
+require_once '../../dao/vouchers.php';
 
+require_once '../../dao/types.php';
+require_once '../../dao/product_image.php';
+require_once '../../dao/product_type.php';
+
+require_once '../../dao/products.php';
 if (isset($_GET['show'])) {
-  require_once '../../dao/brands.php';
-  require_once '../../dao/categories.php';
-  require_once '../../dao/vouchers.php';
-  require_once '../../dao/products.php';
-  require_once '../../dao/product_type.php';
-  require_once '../../dao/product_image.php';
   $get_id = $_GET['id'] ?? "";
   $image_product =  product_image_select_by_product($get_id);
   $row = product_select_by_id($get_id);
@@ -18,12 +20,13 @@ if (isset($_GET['show'])) {
   $row_voucher = voucher_select_by_id($row['voucher_id']);
   $VIEW_NAME = 'show.php';
 } elseif (isset($_GET['create'])) {
-  require_once '../../dao/brands.php';
-  require_once '../../dao/categories.php';
-  require_once '../../dao/vouchers.php';
-  require_once '../../dao/products.php';
-  require_once '../../dao/types.php';
-  require_once '../../dao/product_image.php';
+
+  $rows_cate = categories_select_all();
+  $rows_brand = brand_select_all();
+  $rows_types = type_select_all();
+  $rows_voucher = voucher_select_all();
+  $VIEW_NAME = 'create.php';
+} elseif (isset($_GET['insert'])) {
   $rows_cate = categories_select_all();
   $rows_brand = brand_select_all();
   $rows_types = type_select_all();
@@ -91,21 +94,21 @@ if (isset($_GET['show'])) {
       }
     }
     if ($err == []) {
-
       header("location: " . $ADMIN_URL . '/products/index.php');
       die;
     }
   }
-
   $VIEW_NAME = 'create.php';
 } elseif (isset($_GET['edit'])) {
-  require_once '../../dao/brands.php';
-  require_once '../../dao/categories.php';
-  require_once '../../dao/vouchers.php';
-  require_once '../../dao/products.php';
-  require_once '../../dao/types.php';
-
-  require_once '../../dao/product_image.php';
+  $rows_cate = categories_select_all();
+  $rows_brand = brand_select_all();
+  $rows_types = type_select_all();
+  $rows_voucher = voucher_select_all();
+  $get_id = $_GET['id'] ?? "";
+  $image_product =  product_image_select_by_product($get_id);
+  $row = product_select_by_id($get_id);
+  $VIEW_NAME = 'edit.php';
+} elseif (isset($_GET['update'])) {
   $rows_cate = categories_select_all();
   $rows_brand = brand_select_all();
   $rows_types = type_select_all();
@@ -153,52 +156,46 @@ if (isset($_GET['show'])) {
     $images_tmp = $_FILES['images']['tmp_name'];
     $images_size = $_FILES['images']['size'];
     if ($err == []) {
-      // product_insert($name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id);
       product_update($row['id'], $name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id);
     }
-    foreach ($images as $key => $image) {
-      if ($images_size[$key] > 2 * 1024 * 1024) {
-        $err['image'] = "Hình đã lớn hơn 2mb";
-      } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
 
-        $ext = pathinfo($image, PATHINFO_EXTENSION);
-        $ext = strtolower($ext);
-        if ($ext == 'jpg' || $ext == 'png') {
-        } else {
-          $err['image'] = "không đúng định dạng";
-        }
+    if (!empty($images_size[0])) {
+      foreach ($image_product as $image) {
+        product_image_delete($image['id']);
       }
-      if ($err == []) {
-        if ($images_size[$key] <= 0) {
-          foreach ($image_product as $image) {
-            product_image_update($image['id'], $image['image'], $image['product_id']);
+
+      foreach ($images as $key => $image) {
+        if ($images_size[$key] > 2 * 1024 * 1024) {
+          $err['image'] = "Hình đã lớn hơn 2mb";
+        } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
+
+          $ext = pathinfo($image, PATHINFO_EXTENSION);
+          $ext = strtolower($ext);
+          if ($ext == 'jpg' || $ext == 'png') {
+          } else {
+            $err['image'] = "không đúng định dạng";
           }
-        } else {
-          foreach ($image_product as $image) {
-            product_image_delete($image['id']);
-          }
+        }
+        if ($err == []) {
           product_image_insert($image, $row['id']);
           move_uploaded_file($images_tmp[$key], "../../content/images/" . $image);
         }
       }
     }
-
     if ($err == []) {
-
       header("location: " . $ADMIN_URL . '/products/index.php');
       die;
     }
   }
   $VIEW_NAME = 'edit.php';
 } elseif (isset($_GET['delete'])) {
-  require_once '../../dao/products.php';
+
   $get_id = $_GET['id'] ?? "";
   product_delete($get_id);
   header("location: " . $ADMIN_URL . '/products/index.php');
   die;
 } elseif (isset($_GET['add-link-to-type'])) {
-  require_once '../../dao/product_type.php';
-  require_once '../../dao/types.php';
+
   $get_id = $_GET['id'];
   $types = type_select_all();
 
@@ -221,13 +218,11 @@ if (isset($_GET['show'])) {
   }
   $VIEW_NAME = 'add-link-to-type.php';
 } elseif (isset($_GET['delete-link-to-type'])) {
-  require_once '../../dao/product_type.php';
   $get_id = $_GET['id'];
   $product_id = $_GET['product_id'];
   product_type_delete($get_id);
   header("location: index.php?add-link-to-type&id=$product_id");
 } else {
-  require_once '../../dao/products.php';
   $rows = product_select_all();
   $VIEW_NAME = 'list.php';
 }

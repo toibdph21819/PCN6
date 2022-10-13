@@ -4,6 +4,8 @@ require_once '../../dao/pdo.php';
 
 require_once '../../dao/brands.php';
 if (isset($_GET['create'])) {
+  $VIEW_NAME = 'create.php';
+} elseif (isset($_GET['insert'])) {
   if (isset(($_POST['submit']))) {
     //bình thường
     $name = $_POST['name'];
@@ -36,6 +38,10 @@ if (isset($_GET['create'])) {
 
   $VIEW_NAME = 'create.php';
 } elseif (isset($_GET['edit'])) {
+  $get_id = $_GET['id'] ?? "";
+  $row =  brand_select_by_id($get_id);
+  $VIEW_NAME = 'edit.php';
+} elseif (isset($_GET['update'])) {
   $get_id = $_GET['id'] ?? "";
   if (isset(($_POST['submit']))) {
     //bình thường

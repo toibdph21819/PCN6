@@ -39,7 +39,7 @@
     </div>
     <div class="flex justify-center ">
       <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm text-center">
-        <h5 class="text-gray-900 text-base leading-tight font-medium mb-2">Số lượng thương hiệu trong website</h5>
+        <h5 class="text-gray-900 text-base leading-tight font-medium mb-2">Số danh mục trong website</h5>
         <p class="text-gray-700 text-2xl mb-4">
           <?= $category_count['count'] ?>
         </p>

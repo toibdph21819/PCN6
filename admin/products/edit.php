@@ -1,5 +1,5 @@
 <div class="bg-white p-5 min-h-[100vh] flex items-center">
-  <form name="form" onsubmit="return validate()" class="w-full  mx-auto p-5 rounded-md  border" enctype="multipart/form-data" action="index.php?edit&id=<?= $row['id'] ?? "" ?>" method="post">
+  <form name="form" onsubmit="return validate()" class="w-full  mx-auto p-5 rounded-md  border" enctype="multipart/form-data" action="index.php?update&id=<?= $row['id'] ?? "" ?>" method="post">
     <div class="flex space-x-2 justify-end">
       <a href="index.php" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Trở về</a>
     </div>
@@ -21,9 +21,11 @@
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="">
           hình ảnh
         </label>
-        <?php foreach ($image_product as $image) : ?>
-          <img width="200" class="mt-3" src="<?= $CONTENT_URL ?>/images/<?= $image['image'] ?>" alt="">
-        <?php endforeach; ?>
+        <div class="flex flex-wrap gap-3">
+          <?php foreach ($image_product as $image) : ?>
+            <img width="200" class="mt-3 object-cover" src="<?= $CONTENT_URL ?>/images/<?= $image['image'] ?>" alt="">
+          <?php endforeach; ?>
+        </div>
         <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="images" type="file" name="images[]" multiple>
         <p class="text-gray-600 text-xs italic">có thể chọn nhiều hình ok</p>
         <p class=" text-xs italic error text-red-600"><?= $err['image'] ?? '' ?></p>
