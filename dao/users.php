@@ -18,16 +18,16 @@ function users_select_by_email_password($email, $password)
   return pdo_query_one($sql, $email, $password);
 }
 //thêm
-function users_insert($name, $email, $password, $avatar, $admin, $phone, $created_at)
+function users_insert($name, $email, $password, $avatar, $phone)
 {
-  $sql = "INSERT INTO users (name, email, password, avatar, admin, phone, created_at) values(?,?)";
-  pdo_execute($sql, $name, $email, $password, $avatar, $admin, $phone, $created_at);
+  $sql = "INSERT INTO users (name, email, password, avatar, phone) values(?,?,?,?,?)";
+  pdo_execute($sql, $name, $email, $password, $avatar, $phone);
 }
 //sửa
-function users_update($id, $name, $email, $password, $avatar, $admin, $phone, $created_at)
+function users_update($id, $name, $email, $avatar, $phone)
 {
-  $sql = "UPDATE users SET name = ?, email = ?, password = ?, avatar = ?, admin = ?, phone = ?, created_at = ? where id = ?";
-  pdo_execute($sql, $name, $email, $password, $avatar, $admin, $phone, $created_at, $id);
+  $sql = "UPDATE users SET name = ?, email = ?, avatar = ?, phone = ? where id = ?";
+  pdo_execute($sql, $name, $email, $avatar, $phone, $id);
 }
 //xoá
 function users_delete($id)
