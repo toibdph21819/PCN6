@@ -84,6 +84,7 @@ if (isset($_GET['giohang'])) {
     $numberProduct = $_POST['numberProduct'];
     if (!get_cookie('user_id')) {
       header('Location: index.php?dangnhap');
+      die;
     }
     if ($type_id == "") {
       $err['type_id'] = 'Cần chọn loại hàng';
@@ -91,10 +92,11 @@ if (isset($_GET['giohang'])) {
     if ($numberProduct <= 0) {
       $err['numberProduct'] = 'Cần chọn số lượng';
     }
-    if ($err = []) {
+    if ($err == []) {
       $user_id = get_cookie('user_id');
       order_detail_insert($numberProduct, $id, $user_id, $type_id);
       header('Location: index.php?giohang');
+      die;
     }
   } elseif (isset($_POST['submit'])) {
     $id = $_GET['id'];
