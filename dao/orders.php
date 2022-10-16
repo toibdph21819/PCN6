@@ -11,11 +11,16 @@ function orders_select_by_id($id)
   $sql = "SELECT * FROM orders Where id = ?";
   return pdo_query_one($sql, $id);
 }
-//thêm
-function orders_insert($total, $unit_price)
+function order_select_last_by_id()
 {
-  $sql = "INSERT INTO orders (total, unit_price) values(?,?)";
-  pdo_execute($sql, $total, $unit_price);
+  $sql = "SELECT id FROM orders ORDER BY id DESC LIMIT 1 ";
+  return pdo_query($sql);
+}
+//thêm
+function orders_insert($total, $unit_price, $msg)
+{
+  $sql = "INSERT INTO orders (total, unit_price,msg) values(?,?,?)";
+  pdo_execute($sql, $total, $unit_price, $msg);
 }
 //sửa
 function orders_update($id, $total, $unit_price)

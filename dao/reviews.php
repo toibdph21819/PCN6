@@ -11,6 +11,16 @@ function reviews_select_by_id($id)
   $sql = "SELECT reviews.*,products.name as product_name, users.name as user_name FROM reviews join products on products.id = product_id join users on users.id = user_id Where reviews.id = ?";
   return pdo_query_one($sql, $id);
 }
+function reviews_select_by_product($product_id)
+{
+  $sql = "SELECT reviews.*,users.name,avatar FROM reviews join users on users.id = user_id Where product_id = ?";
+  return pdo_query_all_by_reference_id($sql, $product_id);
+}
+function reviews_select_avg($id)
+{
+  $sql = "SELECT AVG(stars) as avg_star,COUNT(*) as quantity FROM reviews where product_id = ?";
+  return pdo_query_one($sql, $id);
+}
 //thêm
 function reviews_insert($stars, $comment, $user_id, $product_id)
 {

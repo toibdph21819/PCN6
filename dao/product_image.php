@@ -6,6 +6,11 @@ function product_image_select_by_product($product_id)
   $sql = "SELECT * FROM product_image Where product_id = ?";
   return pdo_query_all_by_reference_id($sql, $product_id);
 }
+function product_image_select_by_product_and_featured()
+{
+  $sql = "SELECT product_id,featured,image FROM product_image join products on product_id = products.id Where  products.featured = 1 limit 5";
+  return pdo_query($sql);
+}
 //thêm
 function product_image_insert($image, $product_id)
 {

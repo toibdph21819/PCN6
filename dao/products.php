@@ -2,7 +2,7 @@
 // lấy nhiều
 function product_select_all()
 {
-  $sql = "SELECT products.* ,categories.name as cate_name,brands.name as brand_name FROM products join categories on category_id = categories.id join brands on brand_id = brands.id join vouchers on voucher_id = vouchers.id";
+  $sql = "SELECT products.* ,categories.name as cate_name,brands.name as brand_name, vouchers.discount as voucher_discount FROM products join categories on category_id = categories.id join brands on brand_id = brands.id join vouchers on voucher_id = vouchers.id";
   return  pdo_query($sql);
 }
 //lấy 1
@@ -64,7 +64,7 @@ function product_select_top10_best_sellers()
 //sản phẩm nổi bật
 function product_select_features()
 {
-  $sql = "SELECT * FROM products WHERE featured=1";
+  $sql = "SELECT * FROM products WHERE featured=1 limit 0,5";
   return pdo_query($sql);
 }
 //tìm kiếm bằng loại
@@ -84,7 +84,7 @@ function product_select_by_brand($brand_id)
 //tìm kiếm bằng value của loại hoặc sản phẩm
 function product_select_value($value)
 {
-  $sql = "SELECT * FROM products join categories on products.id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
+  $sql = "SELECT products.* FROM products join categories on products.id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
   return pdo_query($sql, '%' . $value . '%', '%' . $value . '%');
 }
 //sắp xếp theo giá giảm dần
