@@ -1,231 +1,83 @@
 <div class="w-full container mx-auto py-10 px-10">
   <h2 class="text-2xl text-center mb-5">Kết quả tìm kiếm cho Sản phẩm </h2>
   <div class=" grid grid-cols-5 gap-2.5">
-    <a href="" class="p-2.5  text-sm bg-white shadow-lg">
-      <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
-      <h3 class="mt-2.5 ">
-        Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
-      </h3>
-      <div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          Ram 8 GB
-        </div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          SSD 256 GB
-        </div>
-      </div>
-      <div class="mt-2.5">
-        <div>27.490.000₫ <span>-10%</span></div>
-        <div>24.690.000₫</div>
-      </div>
-      <div class="mt-2.5 flex space-x-2">
+    <?php foreach ($rows_product as  $product) : ?>
+      <a href="index.php?ctsp&id=<?= $product['id'] ?>" class="p-2.5  text-xs sm:text-sm bg-white shadow-lg">
+        <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover min-h-[100px]" src="<?= $CONTENT_URL ?>/images/<?php $product_img = product_image_select_by_product($product['id']);
+                                                                                                                                            echo $product_img[0]['image'] ?? ""                                                        ?>" alt="">
+        <h3 class="mt-2.5 ">
+          <?= $product['name'] ?>
+        </h3>
         <div>
-          <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
+
+          <?php
+          $rows_type =  product_type_select_by_type($product['id']);
+          foreach ($rows_type as  $type) : ?>
+            <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
+              <?= $type['name'] ?? '' ?>
+            </div>
+            <?= $type['quantity'] ?>
+          <?php endforeach; ?>
         </div>
-        <div class="">200</div>
-      </div>
-      <div class="mt-2.5">
-        Lượt mua: 200
-      </div>
-      <div class="mt-2.5 ">
-        <div>Màn hình: 13.3", Retina</div>
-
-        <div>CPU: Apple M1</div>
-
-        <div>Card: 7 nhân GPU</div>
-
-        <div>Pin: Khoảng 10 tiếng</div>
-
-        <div>Khối lượng: 1.29 kg</div>
-      </div>
-
-    </a>
-    <a href="" class="p-2.5  text-sm bg-white shadow-lg">
-      <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
-      <h3 class="mt-2.5 ">
-        Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
-      </h3>
-      <div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          Ram 8 GB
+        <div class="mt-2.5">
+          <div>Giá <?= $product['price'] ?> <span>giảm giá : <?= $product['voucher_discount'] ?? '0' ?></span></div>
+          <div><?= $product['price'] - ($product['voucher_discount'] ?? '0') ?></div>
         </div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          SSD 256 GB
+        <div class="mt-2.5 flex space-x-2">
+          <div>
+            <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
+            <?php $star = reviews_select_avg($product['id']);
+            if (floor($star['avg_star']) == 5) {
+              echo '   <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>';
+            } elseif (floor($star['avg_star']) == 4) {
+              echo '   <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid fa-star"></i>';
+            } elseif (floor($star['avg_star']) == 3) {
+              echo '   <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>';
+            } elseif (floor($star['avg_star']) == 2) {
+              echo '   <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>';
+            } elseif (floor($star['avg_star']) == 1) {
+              echo '   <i class="fa-solid text-yellow-400 fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>';
+            } else {
+              echo '   
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>';
+            }
+            ?>
+
+          </div>
+          <div class=""><?= $star['quantity'] ?></div>
         </div>
-      </div>
-      <div class="mt-2.5">
-        <div>27.490.000₫ <span>-10%</span></div>
-        <div>24.690.000₫</div>
-      </div>
-      <div class="mt-2.5 flex space-x-2">
-        <div>
-          <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
+        <div class="mt-2.5">
+          Lượt mua: <?= $product['saleable'] ?? '0' ?>
         </div>
-        <div class="">200</div>
-      </div>
-      <div class="mt-2.5">
-        Lượt mua: 200
-      </div>
-      <div class="mt-2.5 ">
-        <div>Màn hình: 13.3", Retina</div>
-
-        <div>CPU: Apple M1</div>
-
-        <div>Card: 7 nhân GPU</div>
-
-        <div>Pin: Khoảng 10 tiếng</div>
-
-        <div>Khối lượng: 1.29 kg</div>
-      </div>
-
-    </a>
-    <a href="" class="p-2.5  text-sm bg-white shadow-lg">
-      <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
-      <h3 class="mt-2.5 ">
-        Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
-      </h3>
-      <div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          Ram 8 GB
+        <div class="mt-2.5 ">
+          <?= $product['description'] ?>
         </div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          SSD 256 GB
-        </div>
-      </div>
-      <div class="mt-2.5">
-        <div>27.490.000₫ <span>-10%</span></div>
-        <div>24.690.000₫</div>
-      </div>
-      <div class="mt-2.5 flex space-x-2">
-        <div>
-          <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-        </div>
-        <div class="">200</div>
-      </div>
-      <div class="mt-2.5">
-        Lượt mua: 200
-      </div>
-      <div class="mt-2.5 ">
-        <div>Màn hình: 13.3", Retina</div>
-
-        <div>CPU: Apple M1</div>
-
-        <div>Card: 7 nhân GPU</div>
-
-        <div>Pin: Khoảng 10 tiếng</div>
-
-        <div>Khối lượng: 1.29 kg</div>
-      </div>
-
-    </a>
-    <a href="" class="p-2.5  text-sm bg-white shadow-lg">
-      <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
-      <h3 class="mt-2.5 ">
-        Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
-      </h3>
-      <div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          Ram 8 GB
-        </div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          SSD 256 GB
-        </div>
-      </div>
-      <div class="mt-2.5">
-        <div>27.490.000₫ <span>-10%</span></div>
-        <div>24.690.000₫</div>
-      </div>
-      <div class="mt-2.5 flex space-x-2">
-        <div>
-          <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-        </div>
-        <div class="">200</div>
-      </div>
-      <div class="mt-2.5">
-        Lượt mua: 200
-      </div>
-      <div class="mt-2.5 ">
-        <div>Màn hình: 13.3", Retina</div>
-
-        <div>CPU: Apple M1</div>
-
-        <div>Card: 7 nhân GPU</div>
-
-        <div>Pin: Khoảng 10 tiếng</div>
-
-        <div>Khối lượng: 1.29 kg</div>
-      </div>
-
-    </a>
-    <a href="" class="p-2.5  text-sm bg-white shadow-lg">
-      <?php  ?>
-      <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover" src="<?= $CONTENT_URL . '/images/macbook-air-m1-2020-silver-01-org.jpg' ?>" alt="">
-      <h3 class="mt-2.5 ">
-        Laptop Apple MacBook Air M1 2020 8GB/256GB/7-core GPU
-      </h3>
-      <div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          Ram 8 GB
-        </div>
-        <div class="mt-2.5 inline-block text-xs border-slate-400 border px-1">
-          SSD 256 GB
-        </div>
-      </div>
-      <div class="mt-2.5">
-        <div>27.490.000₫ <span>-10%</span></div>
-        <div>24.690.000₫</div>
-      </div>
-      <div class="mt-2.5 flex space-x-2">
-        <div>
-          <!-- kiểm tra phần rating bằng switch case nếu value =4 thì 4 sao có class yellow -->
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-          <i class="fa-solid text-yellow-400 fa-star"></i>
-        </div>
-        <div class="">200</div>
-      </div>
-      <div class="mt-2.5">
-        Lượt mua: 200
-      </div>
-      <div class="mt-2.5 ">
-        <div>Màn hình: 13.3", Retina</div>
-
-        <div>CPU: Apple M1</div>
-
-        <div>Card: 7 nhân GPU</div>
-
-        <div>Pin: Khoảng 10 tiếng</div>
-
-        <div>Khối lượng: 1.29 kg</div>
-      </div>
-
-    </a>
+      </a>
+    <?php endforeach ?>
 
 
   </div>

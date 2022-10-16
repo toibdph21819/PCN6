@@ -8,7 +8,7 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/output.css">
 
 </head>
@@ -20,7 +20,7 @@
         <div class="mx-auto w-full px-10 flex h-24 justify-between items-center">
           <div class="text-3xl">LOGO</div>
           <div class="sm:block hidden">
-            <form action="" class="relative">
+            <form action="index.php?products&value" method="post" class="relative">
               <input class="h-9 rounded-l-2xl border-0 w-64 outline-none px-3 text-sm" type="text" name="search">
               <button class="h-9 absolute rounded-r-2xl bg-white px-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
