@@ -84,7 +84,7 @@ function product_select_by_brand($brand_id)
 //tìm kiếm bằng value của loại hoặc sản phẩm
 function product_select_value($value)
 {
-  $sql = "SELECT products.* FROM products join categories on products.id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
+  $sql = "SELECT products.* FROM products join categories on category_id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
   return pdo_query($sql, '%' . $value . '%', '%' . $value . '%');
 }
 //sắp xếp theo giá giảm dần
