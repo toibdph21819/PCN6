@@ -38,6 +38,7 @@
     <h2 class="text-2xl text-center mb-5">Laptop bán chạy</h2>
     <div class="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:grid-cols-5 gap-2.5">
       <?php foreach ($rows_product as  $product) : ?>
+
         <a href="index.php?ctsp&id=<?= $product['id'] ?>" class="p-2.5  text-xs sm:text-sm bg-white shadow-lg">
           <img class="w-full transition-transform  hover:-translate-y-2 max-h-36 object-cover min-h-[100px]" src="<?= $CONTENT_URL ?>/images/<?php $product_img = product_image_select_by_product($product['id']);
                                                                                                                                               echo $product_img[0]['image'] ?? ""                                                        ?>" alt="">

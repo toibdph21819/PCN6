@@ -1,51 +1,53 @@
 <div class="w-full container py-5 px-2 sm:px-10">
   <div class="text-sm">
     <h2 class="text-center my-3 text-2xl">Thanh toán</h2>
-    <div class="bg-white p-5 mb-5">
-      <div>
-        <h3 class="mb-5 flex items-center space-x-2"><i class="fa-solid fa-location-dot text-primary"></i>
-          <p class="text-primary">Địa chỉ nhận hàng</p>
-        </h3>
-        <select class="border p-3" name="" id="">
-          <option value="">mời chọn</option>
-          <?php foreach ($recipients as $recipient) : ?>
-            <option value=""><?= $recipient['name'] ?>,<?= $recipient['phone'] ?>,<?= $recipient['address'] ?></option>
-          <?php endforeach; ?>
-        </select>
+    <form action="index.php?thanhtoan" method="post">
+      <div class="bg-white p-5 mb-5">
+        <div>
+          <h3 class="mb-5 flex items-center space-x-2"><i class="fa-solid fa-location-dot text-primary"></i>
+            <p class="text-primary">Địa chỉ nhận hàng</p>
+          </h3>
+          <select class="border p-3" name="recipient_id" id="">
+            <option value="">mời chọn</option>
+            <?php foreach ($recipients as $recipient) : ?>
+              <option value="<?= $recipient['id'] ?>"><?= $recipient['name'] ?>,<?= $recipient['phone'] ?>,<?= $recipient['address'] ?></option>
+            <?php endforeach; ?>
+          </select>
+          <div class="text-red-500"><?= $err['recipient_id'] ?? '' ?></div>
 
-        <div class="space-x-3 text-xs">
-          <a href="index.php?recipients">thêm người nhận</a>
+          <div class="space-x-3 text-xs">
+            <a href="index.php?recipients">thêm người nhận</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class=" p-5 bg-white mb-5">
-      <table class=" w-full">
-        <tr class="text-sm">
-          <td colspan="3" class=" p-2 text-lg">Sản phẩm</td>
-          <td class=" p-2 text-center">đơn giá</td>
-          <td class=" p-2 text-center">số lượng</td>
-          <td class=" p-2 text-center">thành tiền</td>
-        </tr>
-        <?php foreach ($detail_order as $order) : ?>
-          <?php $product = product_select_by_id($order['product_id']);
-          $image = product_image_select_by_product($product['id']);
-          ?>
-          <tr class="text-xs">
-            <td class="p-2"><img src="<?= $CONTENT_URL ?>/images/<?= $image[0]['image'] ?>" class="h-8 w-8" alt=""></td>
-            <td class="max-w-[360px]">
-              <p class=" max-w-[340px] overflow-hidden whitespace-nowrap text-ellipsis p-2"> <?= $product['name'] ?></p>
-            </td>
-            <td class=" p-2 text-center">loại: <?= $order['name'] ?></td>
-            <td class=" p-2 text-center"><?= $product['price'] - ($product['voucher_discount'] ?? '0') ?></td>
-            <td class=" p-2 text-center"><?= $order['quantity'] ?></td>
-            <td class=" p-2 text-center"><?php $sum += ($product['price'] - ($product['voucher_discount'] ?? '0')) * $order['quantity'];
-                                          $unit_price += $product['price'] * $order['quantity'];
-                                          echo ($product['price'] - ($product['voucher_discount'] ?? '0')) * $order['quantity']  ?></td>
+      <div class=" p-5 bg-white mb-5">
+        <table class=" w-full">
+          <tr class="text-sm">
+            <td colspan="3" class=" p-2 text-lg">Sản phẩm</td>
+            <td class=" p-2 text-center">đơn giá</td>
+            <td class=" p-2 text-center">số lượng</td>
+            <td class=" p-2 text-center">thành tiền</td>
           </tr>
-        <?php endforeach; ?>
-      </table>
-    </div>
-    <form action="index.php?thanhtoan" method="post">
+
+          <?php foreach ($_SESSION['cart'] as $order) : ?>
+            <tr class="text-xs">
+              <td class="p-2"><img src="<?= $CONTENT_URL ?>/images/<?= $order[2] ?>" class="h-8 object-contain w-8" alt=""></td>
+              <td class="max-w-[360px]">
+                <p class=" max-w-[340px] overflow-hidden whitespace-nowrap text-ellipsis p-2"> <?= $order[1] ?></p>
+              </td>
+              <td class=" p-2 text-center">loại: <?php $type = types_select_by_id($order[7]);
+                                                  echo $type['name']  ?></td>
+              <td class=" p-2 text-center"><?= $order[3] ?></td>
+              <td class=" p-2 text-center"><?= $order[4] ?></td>
+              <td class=" p-2 text-center"><?php $sum +=  $order[6];
+                                            $unit_price += ($order[3] + $order[5]) * $order[4];
+                                            echo $order[6] ?></td>
+            </tr>
+
+          <?php endforeach; ?>
+        </table>
+      </div>
+
       <div class="flex mt-5 bg-[#fafdff] border border-dashed p-5">
         <div class="w-1/2 flex items-baseline gap-x-4">
           <label for="">Lời nhắn:</label>
