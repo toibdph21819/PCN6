@@ -2,7 +2,7 @@
 function product_type_select_by_type($id)
 {
   $sql = "SELECT product_type.id,types.name,quantity, type_id FROM product_type JOIN types ON type_id = types.id WHERE product_id =?";
-  return pdo_query_all_by_reference_id($sql, $id);
+  return pdo_query($sql, $id);
 }
 function product_type_insert($type_id, $product_id, $quantity)
 {

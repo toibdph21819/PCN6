@@ -11,16 +11,12 @@ function orders_select_by_id($id)
   $sql = "SELECT * FROM orders Where id = ?";
   return pdo_query_one($sql, $id);
 }
-function order_select_last_by_id()
-{
-  $sql = "SELECT id FROM orders ORDER BY id DESC LIMIT 1 ";
-  return pdo_query($sql);
-}
+
 //thêm
-function orders_insert($total, $unit_price, $msg)
+function orders_insert($total, $unit_price, $msg, $recipient_id)
 {
-  $sql = "INSERT INTO orders (total, unit_price,msg) values(?,?,?)";
-  pdo_execute($sql, $total, $unit_price, $msg);
+  $sql = "INSERT INTO orders (total, unit_price,msg,recipient_id) values(?,?,?,?)";
+  return pdo_execute_select_last_id($sql, $total, $unit_price, $msg, $recipient_id);
 }
 //sửa
 function orders_update($id, $total, $unit_price)
@@ -33,4 +29,12 @@ function orders_delete($id)
 {
   $sql = "DELETE FROM orders WHERE id = ?";
   pdo_execute($sql, $id);
+}
+function order_get_recipient($id)
+{
+  $sql = "SELECT name, phone, address,msg
+  FROM recipients r
+      JOIN orders o ON o.recipient_id = r.id
+  WHERE o.id = ?";
+  return pdo_query_one($sql, $id);
 }
