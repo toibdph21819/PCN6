@@ -37,6 +37,8 @@
                 <?php if (get_cookie('admin')) : ?>
                   <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $ADMIN_URL ?>">admin</a>
                 <?php endif; ?>
+
+                <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?my_order">hoá đơn của tôi</a></div>
                 <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?phanhoi">phản hồi</a></div>
                 <div class="mt-5"><a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangxuat">Đăng xuất</a></div>
               <?php endif; ?>
@@ -54,6 +56,7 @@
               <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangky">Đăng ký</a>
               <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?dangnhap">Đăng nhập</a>
             <?php else : ?>
+              <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?my_order">hoá đơn của tôi</a>
               <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?phanhoi">phản hồi</a>
               <a class="text-white px-2 py-1 hover:text-primary hover:bg-white" href="<?= $SITE_URL ?>?taikhoan">tài khoản</a>
               <?php if (get_cookie('admin')) : ?>
