@@ -11,17 +11,21 @@ require_once '../dao/reviews.php';
 require_once '../dao/order_detail.php';
 require_once '../dao/orders.php';
 require_once '../dao/recipients.php';
-
+require_once '../dao/types.php';
+session_start();
+if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
 if (isset($_GET['giohang'])) {
   if (!get_cookie('user_id')) {
     header('Location: index.php?dangnhap');
     die;
   }
-  $user_id =  get_cookie('user_id');
-  $detail_order = order_detail_select_user($user_id);
   if (isset($_GET['delete'])) {
-    $id = $_GET['id'];
-    order_detail_delete($id);
+    if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+      array_splice($_SESSION['cart'], $id, 1);
+    } else {
+      $_SESSION['cart'] = array();
+    }
     header('Location: index.php?giohang');
     die;
   }
@@ -34,19 +38,22 @@ if (isset($_GET['giohang'])) {
   }
   $err = [];
   $user_id =  get_cookie('user_id');
-  $detail_order = order_detail_select_user($user_id);
-  $last_order = order_select_last_by_id();
   if (isset($_POST['submit'])) {
+    $recipient_id  = $_POST['recipient_id'];
     $msg = $_POST['msg'] ?? '';
     $total = $_POST['sum'];
     $unit_prc = $_POST['unit_price'];
-
+    if ($recipient_id == '') {
+      $err['recipient_id'] = 'Cần có địa chỉ';
+    }
     if ($err == []) {
-      orders_insert($total, $unit_prc, $msg);
-      foreach ($detail_order as $detail) {
-        order_detail_add_ordersid($last_order[0]['id'], $detail['id']);
+      $id_order = orders_insert($total, $unit_prc, $msg, $recipient_id);
+      foreach ($_SESSION['cart'] as $cart) {
+        order_detail_insert($cart[4], $cart[0], $id_order, $user_id, $cart[7], $cart[6], $cart[3]);
       }
-      header('Location: index.php');
+
+      $_SESSION['cart'] = [];
+      header('Location: index.php?cam_on_mua_hang&id=' . $id_order);
       exit;
     }
   }
@@ -55,6 +62,18 @@ if (isset($_GET['giohang'])) {
   $sum = 0;
   $unit_price = 0;
   $VIEW_NAME = 'thanhtoan.php';
+} elseif (isset($_GET['cam_on_mua_hang'])) {
+  $id = $_GET['id'];
+  $rows = order_detail_get_order($id);
+  $order = orders_select_by_id($id);
+
+  $recipient = order_get_recipient($id);
+  $VIEW_NAME = 'cam_on_mua_hang.php';
+} elseif (isset($_GET['my_order'])) {
+  $user_id = get_cookie('user_id');
+  $orders = order_detail_select_order_from_user($user_id);
+
+  $VIEW_NAME = "my_order.php";
 } elseif (isset($_GET['phanhoi'])) {
 
   $VIEW_NAME = 'phanhoi.php';
@@ -78,23 +97,37 @@ if (isset($_GET['giohang'])) {
   $rows_type =  product_type_select_by_type($id);
   $rows_rv = reviews_select_by_product($id);
   $rows_product = product_select_by_category($product['category_id']);
+  $product_img = product_image_select_by_product($product['id']);
+
   if (isset($_POST['add_product'])) {
     $err = [];
-    $type_id = $_POST['type_id'] ?? "";
+    $type_id_quantity = $_POST['type_id'] ?? "";
     $numberProduct = $_POST['numberProduct'];
     if (!get_cookie('user_id')) {
       header('Location: index.php?dangnhap');
       die;
     }
-    if ($type_id == "") {
+    $array_type = explode('|', $type_id_quantity) ?? "";
+    if ($type_id_quantity == "") {
       $err['type_id'] = 'Cần chọn loại hàng';
     }
+    $type_id = $array_type[0] ?? "";
+    $type_quantity = $array_type[1] ?? "";
     if ($numberProduct <= 0) {
       $err['numberProduct'] = 'Cần chọn số lượng';
+    } elseif ($numberProduct > $type_quantity) {
+      $err['numberProduct'] = 'Nhìn lại số lượng';
     }
     if ($err == []) {
       $user_id = get_cookie('user_id');
-      order_detail_insert($numberProduct, $id, $user_id, $type_id);
+      $price = $product['price'] - ($product['voucher_discount'] ?? '0');
+      $quantity = $numberProduct;
+      $product_name = $product['name'];
+      $voucher_discount = $product['voucher_discount'];
+      $img = $product_img[0]['image'];
+      $total_one_product = $price * $quantity;
+      array_push($_SESSION['cart'], [$id, $product_name, $img, $price, $quantity, $voucher_discount, $total_one_product, $type_id]);
+      // order_detail_insert($numberProduct, $id, $user_id, $type_id);
       header('Location: index.php?giohang');
       die;
     }
