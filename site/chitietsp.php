@@ -18,7 +18,7 @@
         </h2>
         <div class=" grid grid-cols-2 mt-4 text-xs sm:text-base">
           <p>Đánh giá: <?= $reviews['quantity'] ?></p>
-          <p>số lương đã bán: <?= $product['saleable'] ?></p>
+          <p>số lương đã bán : <?= $product['saleable'] ?></p>
           <p>lượt xem: <?= $product['views'] ?></p>
         </div>
         <div class="text-red-500 font-bold mt-4 ">giá:<?= $product['price'] . " -" . ($product['voucher_discount'] ?? '0') ?></div>
