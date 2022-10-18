@@ -4,7 +4,7 @@
 function product_image_select_by_product($product_id)
 {
   $sql = "SELECT * FROM product_image Where product_id = ?";
-  return pdo_query_all_by_reference_id($sql, $product_id);
+  return pdo_query($sql, $product_id);
 }
 function product_image_select_by_product_and_featured()
 {

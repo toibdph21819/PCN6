@@ -14,7 +14,7 @@ function recipients_select_by_id($id)
 function recipients_select_by_user($id)
 {
   $sql = "SELECT * FROM recipients Where user_id = ?";
-  return pdo_query_all_by_reference_id($sql, $id);
+  return pdo_query($sql, $id);
 }
 //thêm
 function recipients_insert($name, $phone, $address, $user_id)

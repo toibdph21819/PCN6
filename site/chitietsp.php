@@ -3,8 +3,8 @@
     <div class="sm:grid md:grid-cols-2 gap-5">
       <div class="flex flex-col space-y-1">
         <div class="w-full h-60 overflow-hidden">
-          <img src="<?= $CONTENT_URL ?>/images/<?php $product_img = product_image_select_by_product($product['id']);
-                                                echo $product_img[0]['image'] ?? "" ?>" alt="" class="transition-transform hover:scale-110 w-full h-full object-cover">
+          <img src="<?= $CONTENT_URL ?>/images/<?=
+                                                $product_img[0]['image'] ?? "" ?>" alt="" class="transition-transform hover:scale-110 w-full h-full object-cover">
         </div>
         <div class="grid grid-cols-4 gap-1">
           <?php foreach ($product_img as $img) : ?>
@@ -21,14 +21,15 @@
           <p>số lương đã bán: <?= $product['saleable'] ?></p>
           <p>lượt xem: <?= $product['views'] ?></p>
         </div>
-        <div class="text-red-500 font-bold mt-4">giá:<?= $product['price'] - ($product['voucher_discount'] ?? '0') ?></div>
+        <div class="text-red-500 font-bold mt-4 ">giá:<?= $product['price'] . " -" . ($product['voucher_discount'] ?? '0') ?></div>
+        <div class="text-red-500 font-bold mt-4">giảm còn:<?= $product['price'] - ($product['voucher_discount'] ?? '0') ?></div>
         <form action="index.php?ctsp&id=<?= $product['id'] ?>" method="post">
           <div class="mt-4 ">
             <span>Phân loại:</span>
             <div class="flex space-x-2 flex-wrap justify-center md:justify-start text-sm gap-y-2">
               <?php
               foreach ($rows_type as  $type) : ?>
-                <input type="radio" name="type_id" id="" value="<?= $type['type_id'] ?>"><?= $type['name'] ?? '' ?></button> <?= $type['quantity'] ?>
+                <input type="radio" name="type_id" id="" value="<?= $type['type_id'] ?>|<?= $type['quantity'] ?>"><?= $type['name'] ?? '' ?> <?= $type['quantity'] ?>
               <?php endforeach; ?>
               <div class="text-red-500"><?= $err['type_id'] ?? '' ?></div>
             </div>

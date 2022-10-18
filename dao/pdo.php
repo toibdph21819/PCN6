@@ -16,6 +16,20 @@ function pdo_get_connection()
   }
 }
 
+function pdo_execute_select_last_id($sql)
+{
+  $sql_args = array_slice(func_get_args(), 1);
+  try {
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($sql_args);
+    return $conn->lastInsertId();
+  } catch (PDOException $e) {
+    throw $e;
+  } finally {
+    unset($conn);
+  }
+}
 function pdo_execute($sql)
 {
   $sql_args = array_slice(func_get_args(), 1);
@@ -45,21 +59,7 @@ function pdo_query($sql)
     unset($conn);
   }
 }
-function pdo_query_all_by_reference_id($sql, $id)
-{
-  $sql_args = array_slice(func_get_args(), 1);
-  try {
-    $conn = pdo_get_connection();
-    $stmt = $conn->prepare($sql);
-    $stmt->execute($sql_args);
-    $rows = $stmt->fetchAll();
-    return $rows;
-  } catch (PDOException $e) {
-    throw $e;
-  } finally {
-    unset($conn);
-  }
-}
+
 function pdo_query_one($sql)
 {
   $sql_args = array_slice(func_get_args(), 1);
