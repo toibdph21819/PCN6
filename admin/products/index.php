@@ -195,7 +195,6 @@ if (isset($_GET['show'])) {
   header("location: " . $ADMIN_URL . '/products/index.php');
   die;
 } elseif (isset($_GET['add-link-to-type'])) {
-
   $get_id = $_GET['id'];
   $types = type_select_all();
 
@@ -210,6 +209,11 @@ if (isset($_GET['show'])) {
     }
     if ($quantity == '') {
       $err['quantity'] = "Mời thêm, mau";
+    }
+    foreach ($rows as $row) {
+      if ($row['type_id'] == $type_id) {
+        $err['type_id'] = "Trông quen lắm";
+      }
     }
     if ($err == []) {
       product_type_insert($type_id, $product_id, $quantity);

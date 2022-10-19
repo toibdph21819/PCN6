@@ -15,3 +15,8 @@ function product_type_delete($id)
 
   pdo_execute($sql, $id);
 }
+function product_type_decrease($type_id, $product_id, $quantity)
+{
+  $sql = "UPDATE product_type SET quantity = quantity - ? WHERE product_id = ? AND type_id = ?";
+  pdo_execute($sql, $quantity, $product_id, $type_id);
+}

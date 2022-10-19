@@ -11,23 +11,28 @@ function users_select_by_id($id)
   $sql = "SELECT * FROM users Where id = ?";
   return pdo_query_one($sql, $id);
 }
-//lấy 1
-function users_select_by_email_password($email, $password)
+
+function users_select_by_email($email)
 {
-  $sql = "select * from users where email=? and password=?";
-  return pdo_query_one($sql, $email, $password);
+  $sql = "select * from users where email=?";
+  return pdo_query_one($sql, $email);
 }
 //thêm
-function users_insert($name, $email, $password, $avatar, $phone)
+function users_insert($name, $email, $password, $phone)
 {
-  $sql = "INSERT INTO users (name, email, password, avatar, phone) values(?,?,?,?,?)";
-  pdo_execute($sql, $name, $email, $password, $avatar, $phone);
+  $sql = "INSERT INTO users (name, email, password, phone) values(?,?,?,?)";
+  pdo_execute($sql, $name, $email, $password, $phone);
 }
 //sửa
 function users_update($id, $name, $email, $avatar, $phone)
 {
   $sql = "UPDATE users SET name = ?, email = ?, avatar = ?, phone = ? where id = ?";
   pdo_execute($sql, $name, $email, $avatar, $phone, $id);
+}
+function users_update_password($id, $password)
+{
+  $sql = "UPDATE users SET password=? where id = ?";
+  pdo_execute($sql, $password, $id);
 }
 //xoá
 function users_delete($id)
