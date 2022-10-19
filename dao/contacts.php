@@ -12,22 +12,16 @@ function contact_select_by_id($id)
   return pdo_query_one($sql, $id);
 }
 //thêm
-function contact_insert($name, $image)
+function contact_insert($title, $user_id, $msg)
 {
-  $sql = "INSERT INTO contacts (name, image) values(?,?)";
-  pdo_execute($sql, $name, $image);
+  $sql = "INSERT INTO contacts(title,user_id,msg) VALUES (?,?,?)";
+  pdo_execute($sql, $title, $user_id, $msg);
 }
-//sửa
-function contact_update($id, $name, $image)
-{
-  $sql = "UPDATE contacts SET name = ?, image = ? where id = ?";
-  pdo_execute($sql, $name, $image, $id);
-}
+
 //xoá
 function contact_delete($id)
 {
   $sql = "DELETE FROM contacts WHERE id = ?";
-
   pdo_execute($sql, $id);
 }
 // lấy ra số lượng của phản hồi

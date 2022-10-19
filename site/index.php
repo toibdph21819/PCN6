@@ -11,6 +11,7 @@ require_once '../dao/reviews.php';
 require_once '../dao/order_detail.php';
 require_once '../dao/orders.php';
 require_once '../dao/recipients.php';
+require_once '../dao/contacts.php';
 require_once '../dao/types.php';
 session_start();
 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
@@ -82,7 +83,22 @@ if (isset($_GET['giohang'])) {
 
   $VIEW_NAME = 'detail_order.php';
 } elseif (isset($_GET['phanhoi'])) {
-
+  $user_id = get_cookie('user_id');
+  if (isset($_POST['submit'])) {
+    $err = [];
+    $title = $_POST['title'];
+    $msg = $_POST['msg'];
+    if ($title == "") {
+      $err['title'] = "Dữ liệu đâu";
+    }
+    if ($msg == "") {
+      $err['msg'] = "Dữ liệu đâu";
+    }
+    if ($err == []) {
+      contact_insert($title, $user_id, $msg);
+      header("Location: index.php?msg=ok luôn các bạn ei ");
+    }
+  }
   $VIEW_NAME = 'phanhoi.php';
 } elseif (isset($_GET['products'])) {
   if (isset($_GET['brand_id'])) {
@@ -167,11 +183,31 @@ if (isset($_GET['giohang'])) {
 } elseif (isset($_GET['doimk'])) {
   $VIEW_NAME = 'doimatkhau.php';
 } elseif (isset($_GET['quenmk'])) {
+  if (isset($_POST['submit'])) {
+    $err = [];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    if ($email == "") {
+      $err['email'] = "Dữ liệu đâu";
+    }
+    if ($password == "") {
+      $err['password'] = "?????";
+    }
+    $user = users_select_by_email($email);
+    if (empty($user)) {
+      $err['user'] = "sai là sai";
+    }
+    if ($err == []) {
+      $hash_password = password_hash($password, PASSWORD_BCRYPT);
+      users_update_password($user['id'], $hash_password);
+      header("Location: index.php?dangnhap");
+      die;
+    }
+  }
   $VIEW_NAME = 'quenmk.php';
 } elseif (isset($_GET['dangky'])) {
   if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
@@ -308,6 +344,7 @@ if (isset($_GET['giohang'])) {
   }
   $VIEW_NAME = 'address.php';
 } else {
+  $msg = $_GET['msg'] ?? "";
   $rows_cate = categories_select_all();
   $rows_brand = brand_select_all();
   $rows_product = product_select_top10_best_sellers();

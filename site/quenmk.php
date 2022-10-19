@@ -5,22 +5,21 @@
             <div class="text-center mb-5">
                 <h2>Quên mật khẩu</h2>
             </div>
-            <form class="" action="">
+            <form class="" method="post" action="index.php?quenmk">
+                <p class=" text-xs italic error text-red-600"><?= $err['user'] ?? '' ?></p>
                 <div class="mt-4 space-y-3">
-                    <label for="name">email</label>
-                    <input type="text" name="name" placeholder="Nhập email" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <label for="">email</label>
+                    <input type="text" name="email" placeholder="Nhập email" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <p class=" text-xs italic error text-red-600"><?= $err['email'] ?? '' ?></p>
                 </div>
                 <div class="mt-4 space-y-3">
-                    <label for="name">tên</label>
-                    <input type="text" name="name" placeholder="Nhập tên" class="p-2 border shadow-sm rounded-md h-10 w-full">
-                </div>
-                <div class="mt-4 space-y-3">
-                    <label for="name">số điện thoại</label>
-                    <input type="number" name="name" placeholder="Nhập số điện thoại" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <label for="">mật khẩu mới</label>
+                    <input type="text" name="password" placeholder="Nhập password" class="p-2 border shadow-sm rounded-md h-10 w-full">
+                    <p class=" text-xs italic error text-red-600"><?= $err['password'] ?? '' ?></p>
                 </div>
 
                 <div class="text-center w-full  mx-auto mt-5">
-                    <input type="submit" value="Gửi" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
+                    <input type="submit" name="submit" value="Gửi" class="transition-colors w-full py-2 rounded-md bg-primary hover:bg-transparent cursor-pointer hover:text-black text-white border-primary border">
                 </div>
                 <div class="text-center w-full  mx-auto mt-5">
                     <a href="<?= $SITE_URL ?>" class="transition-colors block w-full py-2 rounded-md border-primary border hover:bg-primary hover:text-white">Trở về</a>
