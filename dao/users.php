@@ -17,11 +17,16 @@ function users_select_by_email_password($email, $password)
   $sql = "select * from users where email=? and password=?";
   return pdo_query_one($sql, $email, $password);
 }
-//thêm
-function users_insert($name, $email, $password, $avatar, $phone)
+function users_select_by_email($email)
 {
-  $sql = "INSERT INTO users (name, email, password, avatar, phone) values(?,?,?,?,?)";
-  pdo_execute($sql, $name, $email, $password, $avatar, $phone);
+  $sql = "select * from users where email=?";
+  return pdo_query_one($sql, $email);
+}
+//thêm
+function users_insert($name, $email, $password, $phone)
+{
+  $sql = "INSERT INTO users (name, email, password, phone) values(?,?,?,?)";
+  pdo_execute($sql, $name, $email, $password, $phone);
 }
 //sửa
 function users_update($id, $name, $email, $avatar, $phone)

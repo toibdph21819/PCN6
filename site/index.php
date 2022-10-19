@@ -50,8 +50,9 @@ if (isset($_GET['giohang'])) {
       $id_order = orders_insert($total, $unit_prc, $msg, $recipient_id);
       foreach ($_SESSION['cart'] as $cart) {
         order_detail_insert($cart[4], $cart[0], $id_order, $user_id, $cart[7], $cart[6], $cart[3]);
+        product_increase_sales($cart[0], $cart[4]);
+        product_type_decrease($cart[7], $cart[0], $cart[4]);
       }
-
       $_SESSION['cart'] = [];
       header('Location: index.php?cam_on_mua_hang&id=' . $id_order);
       exit;
@@ -74,6 +75,12 @@ if (isset($_GET['giohang'])) {
   $orders = order_detail_select_order_from_user($user_id);
 
   $VIEW_NAME = "my_order.php";
+} elseif (isset($_GET['detail_order'])) {
+  $id = $_GET['id'];
+  $rows = order_detail_get_order($id);
+  $order = orders_select_by_id($id);
+
+  $VIEW_NAME = 'detail_order.php';
 } elseif (isset($_GET['phanhoi'])) {
 
   $VIEW_NAME = 'phanhoi.php';
@@ -97,6 +104,9 @@ if (isset($_GET['giohang'])) {
   $rows_type =  product_type_select_by_type($id);
   $rows_rv = reviews_select_by_product($id);
   $rows_product = product_select_by_category($product['category_id']);
+  $rows_product = array_filter($rows_product, function ($item) use ($product) {
+    return $item['id'] != $product['id'];
+  });
   $product_img = product_image_select_by_product($product['id']);
 
   if (isset($_POST['add_product'])) {
@@ -127,7 +137,7 @@ if (isset($_GET['giohang'])) {
       $img = $product_img[0]['image'];
       $total_one_product = $price * $quantity;
       array_push($_SESSION['cart'], [$id, $product_name, $img, $price, $quantity, $voucher_discount, $total_one_product, $type_id]);
-      // order_detail_insert($numberProduct, $id, $user_id, $type_id);
+
       header('Location: index.php?giohang');
       die;
     }
@@ -159,7 +169,43 @@ if (isset($_GET['giohang'])) {
 } elseif (isset($_GET['quenmk'])) {
   $VIEW_NAME = 'quenmk.php';
 } elseif (isset($_GET['dangky'])) {
+  if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
 
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+    $repeat_password = $_POST['repeat_password'];
+    $err = [];
+    if ($name == "") {
+      $err['name'] = "Cần nhập";
+    }
+    if ($email == "") {
+      $err['email'] = "Cần nhập";
+    }
+    if ($phone == "") {
+      $err['phone'] = "Cần nhập";
+    }
+    if ($password == "") {
+      $err['password'] = "Cần nhập";
+    }
+    if ($repeat_password == "") {
+      $err['repeat_password'] = "Cần nhập";
+    } elseif ($repeat_password != $password) {
+      $err['repeat_password'] = "Cần nhập giống với mật khẩu";
+    }
+    $users = users_select_all();
+    foreach ($users as $user) {
+      if ($user['email'] == $email) {
+        $err['email'] = "email đã tồn tại";
+      }
+    }
+    if ($err == []) {
+      $hash_password = password_hash($password, PASSWORD_BCRYPT);
+      users_insert($name, $email, $hash_password, $phone);
+      header('Location: index.php?dangnhap');
+    }
+  }
   $VIEW_NAME = 'dangky.php';
 } elseif (isset($_GET['dangnhap'])) {
   if (isset($_POST['submit'])) {
@@ -172,9 +218,11 @@ if (isset($_GET['giohang'])) {
     if ($email == "") {
       $err['email'] = "Dữ liệu đâu";
     }
+    $users = users_select_all();
+
     if ($err == []) {
-      $user = users_select_by_email_password($email, $password);
-      if (!empty($user)) {
+      $user = users_select_by_email($email);
+      if (password_verify($password, $user['password']) == true) {
         add_cookie('user_id', $user['id'], 1);
         add_cookie('name', $user['name'], 1);
         add_cookie('admin', $user['admin'], 1);

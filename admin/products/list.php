@@ -1,4 +1,4 @@
-<div class="bg-white flex justify-center">
+<div class="bg-white flex justify-center container">
   <div class="flex flex-col p-10">
     <h2 class="text-xl">Danh sách sản phẩm</h2>
     <div>
@@ -48,7 +48,7 @@
                 <?php foreach ($rows as $row) : ?>
                   <tr class="border-b">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><?= $row['id'] ?? "" ?></td>
-                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 border-r">
                       <?= $row['name'] ?? "" ?>
                     </td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">

@@ -44,10 +44,10 @@ function product_increase_view($id)
   pdo_execute($sql, $id);
 }
 //tăng số lượng bán
-function product_increase_sales($id)
+function product_increase_sales($id, $quantity)
 {
-  $sql = "UPDATE products SET saleable=saleable+1 WHERE id = ?";
-  pdo_execute($sql, $id);
+  $sql = "UPDATE products SET saleable=saleable+? WHERE id = ?";
+  pdo_execute($sql, $quantity, $id);
 }
 //top 10 lượt xem nhiều nhất
 function product_select_top10_views()
@@ -86,12 +86,6 @@ function product_select_value($value)
 {
   $sql = "SELECT products.* FROM products join categories on category_id = categories.id WHERE categories.name LIKE ? OR products.name LIKE ?";
   return pdo_query($sql, '%' . $value . '%', '%' . $value . '%');
-}
-//sắp xếp theo giá giảm dần
-function product_sort_by_price()
-{
-  $sql = "SELECT * FROM products WHERE price>0 order by price desc";
-  return pdo_query($sql);
 }
 
 // lấy ra số lượng của sản phẩm
