@@ -87,7 +87,7 @@
               <option value="" selected>Chọn trường</option>
               <?php foreach ($rows_voucher as $voucher) : ?>
                 <option value="<?= $voucher['id'] ?>">
-                  <?= $voucher['name'] ?>| Giảm : <?= $voucher['discount'] . '%' ?>
+                  <?= $voucher['name'] ?>| Giảm : <?= $voucher['discount']  ?>
                 </option>
 
               <?php endforeach; ?>
