@@ -73,27 +73,25 @@ if (isset($_GET['show'])) {
     if ($err == []) {
       product_insert($name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id);
       $product_id = product_select_last_by_id();
-    }
-    foreach ($images as $key => $image) {
-      if ($images_size[$key] <= 0) {
-        $err['image'] = "cần có dữ liệu";
-      } elseif ($images_size[$key] > 2 * 1024 * 1024) {
-        $err['image'] = "Hình đã lớn hơn 2mb";
-      } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
+      foreach ($images as $key => $image) {
+        if ($images_size[$key] <= 0) {
+          $err['image'] = "cần có dữ liệu";
+        } elseif ($images_size[$key] > 2 * 1024 * 1024) {
+          $err['image'] = "Hình đã lớn hơn 2mb";
+        } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
 
-        $ext = pathinfo($image, PATHINFO_EXTENSION);
-        $ext = strtolower($ext);
-        if ($ext == 'jpg' || $ext == 'png') {
-        } else {
-          $err['image'] = "không đúng định dạng";
+          $ext = pathinfo($image, PATHINFO_EXTENSION);
+          $ext = strtolower($ext);
+          if ($ext == 'jpg' || $ext == 'png') {
+          } else {
+            $err['image'] = "không đúng định dạng";
+          }
+        }
+        if ($err == []) {
+          product_image_insert($image, $product_id[0]['id']);
+          move_uploaded_file($images_tmp[$key], "../../content/images/" . $image);
         }
       }
-      if ($err == []) {
-        product_image_insert($image, $product_id[0]['id']);
-        move_uploaded_file($images_tmp[$key], "../../content/images/" . $image);
-      }
-    }
-    if ($err == []) {
       header("location: " . $ADMIN_URL . '/products/index.php');
       die;
     }
@@ -157,32 +155,29 @@ if (isset($_GET['show'])) {
     $images_size = $_FILES['images']['size'];
     if ($err == []) {
       product_update($row['id'], $name, $price,  $featured, $active, $description, $category_id, $voucher_id, $brand_id);
-    }
+      if (!empty($images_size[0])) {
+        foreach ($image_product as $image) {
+          product_image_delete($image['id']);
+        }
 
-    if (!empty($images_size[0])) {
-      foreach ($image_product as $image) {
-        product_image_delete($image['id']);
-      }
+        foreach ($images as $key => $image) {
+          if ($images_size[$key] > 2 * 1024 * 1024) {
+            $err['image'] = "Hình đã lớn hơn 2mb";
+          } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
 
-      foreach ($images as $key => $image) {
-        if ($images_size[$key] > 2 * 1024 * 1024) {
-          $err['image'] = "Hình đã lớn hơn 2mb";
-        } elseif ($images_size[$key] > 0 && $images_size[$key] <= 2 * 1024 * 1024) {
-
-          $ext = pathinfo($image, PATHINFO_EXTENSION);
-          $ext = strtolower($ext);
-          if ($ext == 'jpg' || $ext == 'png') {
-          } else {
-            $err['image'] = "không đúng định dạng";
+            $ext = pathinfo($image, PATHINFO_EXTENSION);
+            $ext = strtolower($ext);
+            if ($ext == 'jpg' || $ext == 'png') {
+            } else {
+              $err['image'] = "không đúng định dạng";
+            }
+          }
+          if ($err == []) {
+            product_image_insert($image, $row['id']);
+            move_uploaded_file($images_tmp[$key], "../../content/images/" . $image);
           }
         }
-        if ($err == []) {
-          product_image_insert($image, $row['id']);
-          move_uploaded_file($images_tmp[$key], "../../content/images/" . $image);
-        }
       }
-    }
-    if ($err == []) {
       header("location: " . $ADMIN_URL . '/products/index.php');
       die;
     }
