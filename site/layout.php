@@ -18,7 +18,7 @@
     <header class="bg-primary">
       <div class=" ">
         <div class="mx-auto w-full px-10 flex h-24 justify-between items-center">
-          <div class="text-3xl">LOGO</div>
+          <div class="text-3xl"><a href="index.php"><img class="w-24 h-24" src="<?= $CONTENT_URL ?>/images/logo.jpg" alt=""></a></div>
           <div class="sm:block hidden">
             <form action="index.php?products&value" method="post" class="relative">
               <input class="h-9 rounded-l-2xl border-0 w-64 outline-none px-3 text-sm" type="text" name="search">
