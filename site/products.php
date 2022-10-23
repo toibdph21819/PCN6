@@ -73,7 +73,7 @@
         <div class="mt-2.5">
           Lượt mua: <?= $product['saleable'] ?? '0' ?>
         </div>
-        <div class="mt-2.5 ">
+        <div class="mt-2.5 break-words">
           <?= $product['description'] ?>
         </div>
       </a>
