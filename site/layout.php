@@ -75,7 +75,7 @@
 
     <footer class="bg-primary">
       <div class="w-full py-10 pl-10 pr-16 xl:px-0  max-w-full mx-auto flex gap-10 flex-col sm:flex-row sm:justify-between sm:items-center">
-        <div class="text-3xl text-center">LOGO</div>
+        <div class="text-3xl text-center"><a href="index.php"><img class="w-24 h-24" src="<?= $CONTENT_URL ?>/images/logo.jpg" alt=""></a></div>
         <div class="text-white text-center -translate-y-5">
           <div>Hỗ trợ</div>
           <div><a href="./index.php">phản hồi</a></div>
