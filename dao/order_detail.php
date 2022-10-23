@@ -23,7 +23,7 @@ function order_detail_select_order($id)
 }
 function order_detail_select_order_from_user($id)
 {
-  $sql = "SELECT * FROM order_detail od JOIN orders on od.order_id = orders.id WHERE user_id = ? GROUP BY order_id";
+  $sql = "SELECT * FROM order_detail od JOIN orders on od.order_id = orders.id WHERE user_id = ? GROUP BY order_id order by order_id desc";
   return  pdo_query($sql, $id);
 }
 

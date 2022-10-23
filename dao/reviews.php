@@ -13,7 +13,7 @@ function reviews_select_by_id($id)
 }
 function reviews_select_by_product($product_id)
 {
-  $sql = "SELECT reviews.*,users.name,avatar FROM reviews join users on users.id = user_id Where product_id = ?";
+  $sql = "SELECT reviews.*,users.name,avatar FROM reviews join users on users.id = user_id Where product_id = ? order by created_at desc";
   return pdo_query($sql, $product_id);
 }
 function reviews_select_avg($id)
