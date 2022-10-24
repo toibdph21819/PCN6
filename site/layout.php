@@ -78,7 +78,7 @@
         <div class="text-3xl text-center"><a href="index.php"><img class="w-24 h-24" src="<?= $CONTENT_URL ?>/images/logo.jpg" alt=""></a></div>
         <div class="text-white text-center -translate-y-5">
           <div>Hỗ trợ</div>
-          <div><a href="./index.php">phản hồi</a></div>
+          <div><a href="./index.php">phản hồi </a></div>
         </div>
         <div class="text-white text-center">
           <div>các trang</div>
