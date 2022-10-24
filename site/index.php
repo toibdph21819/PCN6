@@ -96,7 +96,7 @@ if (isset($_GET['giohang'])) {
     }
     if ($err == []) {
       contact_insert($title, $user_id, $msg);
-      header("Location: index.php?msg=ok luôn các bạn ei ");
+      header("Location: index.php");
     }
   }
   $VIEW_NAME = 'phanhoi.php';
